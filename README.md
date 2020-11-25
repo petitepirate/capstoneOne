@@ -4,5 +4,4 @@ News API
 https://currentsapi.services/en/docs/
 
 Currency Converter
-https://ratesapi.io/documentation/
-https://currentsapi.services/en/docs/
+https://ratesapi.io/documentation/ or https://currentsapi.services/en/docs/
