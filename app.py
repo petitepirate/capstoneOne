@@ -1,5 +1,5 @@
 from flask import Flask, request, redirect, render_template
-from models import db, connect_db, User
+from models import db, connect_db, User, Job
 
 
 app = Flask(__name__)
