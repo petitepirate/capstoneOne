@@ -1,6 +1,8 @@
 body {
 	padding: 0;
 	margin: 0;
+	/* border: 3px solid orange; */
+	overflow: hidden;
 }
 
 .title {
@@ -12,9 +14,12 @@ body {
 
 .title2 {
 	margin: auto;
-	width: 80%;
-	padding-top: 0.5%;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	height: 6vw;
+	padding-top: 0px;
 	padding-bottom: 0px;
+	/* border: 3px solid green; */
 }
 
 .center {
@@ -22,7 +27,6 @@ body {
 	justify-content: center;
 	margin: auto;
 	width: 100%;
-	/* border: 3px solid green; */
 	padding: 10px;
 }
 
@@ -36,19 +40,10 @@ body {
 
 .map {
 	display: inline;
-	margin: auto;
-	width: 80%;
-	text-align: center;
+	justify-content: center;
+	margin: 0px;
+	width: 70%;
 	padding: 0px;
-	/* border: 3px solid black; */
-}
-
-.map2 {
-	display: inline;
-	margin: auto;
-	width: 30%;
-	text-align: left;
-	padding: 10px;
 	/* border: 3px solid black; */
 }
 
@@ -57,12 +52,13 @@ body {
 .row3,
 .row4 {
 	display: flex;
-	width: 80%;
+	width: 100%;
 }
 .construction {
 	position: absolute;
-	margin-left: 80%;
-	padding-right: 5%;
+	margin-top: 1.5vh;
+	margin-left: 85%;
+	padding-right: 2%;
 	width: 20%;
 	text-align: center;
 }
@@ -83,36 +79,50 @@ img .inline {
 h1 {
 	width: auto;
 	text-align: center;
-	padding-top: 1vw;
+	padding: 0;
 	font-family: 'Fredericka the Great', cursive;
 	font-size: 3vw;
+	/* border: 3px solid purple; */
 }
 
 h2 {
 	width: auto;
 	text-align: center;
-	padding-top: 1vw;
+	/* padding-top: 0.1vw; */
 	font-family: 'Fredericka the Great', cursive;
 	font-size: 2vw;
+	padding-bottom: 0.2vw;
 }
 
 .navbar {
-	background-color: rgb(11, 100, 184);
+	/* background-color: rgb(86, 153, 216); */
+	background-image: url("https://i.ibb.co/PmsYDRp/waves.png");
+	background-size: 100%;
 	overflow: hidden;
 }
 
 .navbar a {
 	float: left;
-	color: white;
+	color: rgb(5, 5, 109);
 	text-align: center;
 	padding: 14px 16px;
 	text-decoration: none;
-	font-size: 17px;
+	font-size: 0.9vw;
+	font-family: Helvetica, Arial, sans-serif;
 }
 
 .navbar a:hover {
-	background-color: rgb(190, 126, 243);
-	color: rgb(54, 212, 48);
+	background-color: rgb(9, 202, 250);
+	color: rgb(5, 5, 109);
+	font-weight: bold;
+}
+
+.navbar .construction a:hover {
+	background-color: rgb(9, 202, 250);
+}
+
+.navbar .construction button:hover {
+	background-color: rgb(9, 202, 250);
 }
 
 #user_img {
