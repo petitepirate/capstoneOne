@@ -1,7 +1,7 @@
 from models import db, User, Job
 from app import app
 
-db.drop_all()
+# db.drop_all()
 db.create_all()
 
 u1 = User(
@@ -27,6 +27,7 @@ j1 = Job(
     location="Gulf of Mexico",
     start_year='2019',
     day_rate='175',
+    user_name='msmegan'
 )
 
 db.session.add_all([u1, u2, j1])
