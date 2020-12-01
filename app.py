@@ -1,13 +1,14 @@
 from flask import Flask, request, redirect, render_template
 from models import db, connect_db, User, Job
-
+import os
 
 app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///psopayscale2'
 app.config['SQLALCHEMY_ECHO'] = True
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] = "shenanigans"
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', '12345678')
+
 
 connect_db(app)
 db.create_all()
