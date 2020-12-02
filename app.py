@@ -1,5 +1,6 @@
 from flask import Flask, request, redirect, render_template
 from models import db, connect_db, User, Job
+from forms import NewUserForm, LoginForm
 import os
 
 app = Flask(__name__)
@@ -44,8 +45,8 @@ def page_not_found(e):
 @app.route("/user/new", methods=["GET"])
 def users_new_form():
     """Show a form to create a new user"""
-
-    return render_template('new_user.html')
+    form = NewUserForm()
+    return render_template('new_user.html', form=form)
 
 @app.route("/user/new", methods=["POST"])
 def add_user():
@@ -54,6 +55,7 @@ def add_user():
         first_name=request.form["first_name"],
         last_name=request.form["last_name"],
         email=request.form["email"],
+        password=request.form["password"],
         image_url=request.form['image_url'] or None)
 
     db.session.add(new_user)
