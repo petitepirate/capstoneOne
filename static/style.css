@@ -30,9 +30,11 @@ body {
 	padding: 10px;
 }
 
-.turtle {
+.loginmap {
+	display: flex;
+	justify-content: center;
 	margin: auto;
-	width: 50%;
+	width: 70%;
 	text-align: center;
 	padding: 4rem;
 	padding: 0px;
