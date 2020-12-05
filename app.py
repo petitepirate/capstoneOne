@@ -85,17 +85,9 @@ def add_user():
     return redirect('/home')
     # return redirect('/user/info/<int:user_id>')
 
-@app.route('/user/login', methods=["GET"])
-def login_form():
-    """Show a form to login"""
-
-    form = LoginForm()
-
-    return render_template('login.html', form=form)
-
-@app.route('/user/login', methods=["POST"])
+@app.route('/user/login', methods=["GET", "POST"])
 def login():
-    """Submit user's login info"""
+    """Handle user login."""
 
     form = LoginForm()
 
@@ -106,11 +98,20 @@ def login():
         if user:
             do_login(user)
             flash(f"Hello, {user.user_name}!", "success")
-            return redirect("/home")  #eventually switch to user's detail's page
+            return redirect("/home")
 
         flash("Invalid credentials.", 'danger')
 
     return render_template('login.html', form=form)
+
+
+@app.route('/logout')
+def logout():
+    """Handle logout of user."""
+
+    do_logout()
+    flash("Goodbye for now!", "success")
+    return redirect("/")
 
 
 @app.route("/user/info/<int:user_id>", methods=["GET"])
@@ -151,6 +152,11 @@ def enterpage():
 
 @app.route("/home")
 def homepage():
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/login")
+
     return render_template('index2.html')
 
 @app.route("/about")
