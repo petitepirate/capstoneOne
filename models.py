@@ -47,7 +47,7 @@ class User(db.Model):
         )
 
         db.session.add(user)
-        db.session.commit()
+        # db.session.commit()
         return user
 
     @classmethod
@@ -61,10 +61,10 @@ class User(db.Model):
         If can't find matching user (or if password is wrong), returns False.
         """
 
-        user = User.query.filter_by(user_name=user_name).first()
+        user = cls.query.filter_by(user_name=user_name).first()
 
         if user:
-            is_auth = bcrypt.check_password_hash(password, user.password)
+            is_auth = bcrypt.check_password_hash(user.password, password)
             if is_auth:
                 return user
 
