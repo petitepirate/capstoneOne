@@ -22,6 +22,12 @@ u2 = User(
     password='pirate2'
 )
 
+
+
+db.session.add_all([u1, u2])
+db.session.commit()
+
+
 j1 = Job(
     job_title="Protected Species Observer",
     location="Gulf of Mexico",
@@ -30,5 +36,5 @@ j1 = Job(
     user_id='1'
 )
 
-db.session.add_all([u1, u2, j1])
+db.session.add_all([j1])
 db.session.commit()
