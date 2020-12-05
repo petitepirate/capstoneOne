@@ -4,6 +4,8 @@ from forms import NewUserForm, LoginForm
 from sqlalchemy.exc import IntegrityError
 import os
 
+CURR_USER_KEY = "curr_user"
+
 app = Flask(__name__)
 
 CURR_USER_KEY = "curr_user"
@@ -20,32 +22,7 @@ db.create_all()
 # toolbar = DebugToolbarExtension(app)
 
 
-#### HOME ROUTES ####
-@app.route("/")
-def enterpage():
-    data = open('index.html').read()    
-    return data
-
-@app.route("/home")
-def homepage():
-    return render_template('index2.html')
-
-@app.route("/about")
-def aboutpage():
-    return render_template('about.html')
-
-@app.errorhandler(404)
-def page_not_found(e):
-    """Custom 404 Page"""
-
-    return render_template('404.html'), 404
-# @app.route("/regions")
-# def aboutpage():
-#     return render_template('regions.html')
-
-
 #### USERS ROUTES #####
-
 @app.before_request
 def add_user_to_g():
     """If we're logged in, add curr user to Flask global."""
@@ -56,12 +33,10 @@ def add_user_to_g():
     else:
         g.user = None
 
-
 def do_login(user):
     """Log in user."""
 
     session[CURR_USER_KEY] = user.id
-
 
 def do_logout():
     """Logout user."""
@@ -72,21 +47,41 @@ def do_logout():
 @app.route("/user/new", methods=["GET"])
 def users_new_form():
     """Show a form to create a new user"""
-    form = NewUserForm()
+    form= NewUserForm()
+
     return render_template('new_user.html', form=form)
 
 @app.route("/user/new", methods=["POST"])
 def add_user():
-    new_user = User(
-        user_name=request.form["user_name"],
-        first_name=request.form["first_name"],
-        last_name=request.form["last_name"],
-        email=request.form["email"],
-        password=request.form["password"],
-        image_url=request.form['image_url'] or None)
 
-    db.session.add(new_user)
-    db.session.commit()
+    form = NewUserForm()
+
+    if form.validate_on_submit():
+        try:
+            user = User.signup(
+                user_name=form.user_name.data,
+                first_name=form.first_name.data,
+                last_name=form.last_name.data,
+                email=form.email.data,
+                password=form.password.data,
+                image_url=form.image_url.data or None)
+
+            # db.session.add(user)
+            db.session.commit()
+
+            # session["user_id"] = user.id
+
+        except IntegrityError:
+            flash("Username already taken", 'danger')
+            return render_template('new_user.html', form=form)
+
+        do_login(user)
+
+        return redirect("/home")
+
+    else:
+        return render_template('new_user.html', form=form)
+
     return redirect('/home')
     # return redirect('/user/info/<int:user_id>')
 
@@ -117,6 +112,7 @@ def login():
 
     return render_template('login.html', form=form)
 
+
 @app.route("/user/info/<int:user_id>", methods=["GET"])
 def user_page(user_id):
     user = User.query.get_or_404(user_id)
@@ -145,6 +141,30 @@ def submit_edit(user_id):
     db.session.commit()
 
     return redirect("/user/info/<int:user_id>")
+
+
+#### HOME ROUTES ####
+@app.route("/")
+def enterpage():
+    data = open('index.html').read()    
+    return data
+
+@app.route("/home")
+def homepage():
+    return render_template('index2.html')
+
+@app.route("/about")
+def aboutpage():
+    return render_template('about.html')
+
+@app.errorhandler(404)
+def page_not_found(e):
+    """Custom 404 Page"""
+
+    return render_template('404.html'), 404
+# @app.route("/regions")
+# def aboutpage():
+#     return render_template('regions.html')
 
 
 #### JOBS ROUTES #####
