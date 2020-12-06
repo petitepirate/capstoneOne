@@ -28,47 +28,47 @@ class User(db.Model):
     password = db.Column(db.Text, nullable=False)
     # jobs = db.relationship('Job')
     
-    # @classmethod
-    # def signup(cls, user_name, first_name, last_name, email, password, image_url):
-    #     """Sign up user.
+    @classmethod
+    def signup(cls, user_name, first_name, last_name, email, password, image_url):
+        """Sign up user.
 
-    #     Hashes password and adds user to system.
-    #     """
+        Hashes password and adds user to system.
+        """
 
-    #     hashed_pwd = bcrypt.generate_password_hash(password).decode('UTF-8')
+        hashed_pwd = bcrypt.generate_password_hash(password).decode('UTF-8')
 
-    #     user = User(
-    #         user_name=user_name,
-    #         first_name=first_name,
-    #         last_name=last_name,
-    #         email=email,
-    #         password=hashed_pwd,
-    #         image_url=image_url,
-    #     )
+        user = User(
+            user_name=user_name,
+            first_name=first_name,
+            last_name=last_name,
+            email=email,
+            password=hashed_pwd,
+            image_url=image_url,
+        )
 
-    #     db.session.add(user)
-    #     # db.session.commit()
-    #     return user
+        db.session.add(user)
+        # db.session.commit()
+        return user
 
-    # @classmethod
-    # def authenticate(cls, user_name, password):
-    #     """Find user with `username` and `password`.
+    @classmethod
+    def authenticate(cls, user_name, password):
+        """Find user with `username` and `password`.
 
-    #     This is a class method (call it on the class, not an individual user.)
-    #     It searches for a user whose password hash matches this password
-    #     and, if it finds such a user, returns that user object.
+        This is a class method (call it on the class, not an individual user.)
+        It searches for a user whose password hash matches this password
+        and, if it finds such a user, returns that user object.
 
-    #     If can't find matching user (or if password is wrong), returns False.
-    #     """
+        If can't find matching user (or if password is wrong), returns False.
+        """
 
-    #     user = cls.query.filter_by(user_name=user_name).first()
+        user = cls.query.filter_by(user_name=user_name).first()
 
-    #     if user:
-    #         is_auth = bcrypt.check_password_hash(user.password, password)
-    #         if is_auth:
-    #             return user
+        if user:
+            is_auth = bcrypt.check_password_hash(user.password, password)
+            if is_auth:
+                return user
 
-    #     return False
+        return False
 
 
 class Job(db.Model):
