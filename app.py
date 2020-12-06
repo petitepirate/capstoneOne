@@ -153,9 +153,9 @@ def enterpage():
 @app.route("/home")
 def homepage():
 
-    if not g.user:
-        flash("Access unauthorized.", "danger")
-        return redirect("/login")
+    # if not g.user:
+    #     flash("Access unauthorized.", "danger")
+    #     return redirect("/login")
 
     return render_template('index2.html')
 
