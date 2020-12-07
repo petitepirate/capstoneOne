@@ -16,14 +16,24 @@
 
     <title>PSO PayScale</title>
 </head>
-<body>
-    <nav class="navbar">
-        <a href="/home">Home</a>
-        <a href="/about">About</a> 
-        <div class="construction">
-            <a href="/logout" ><button class="navuser" type="button" class="btn btn-info">Logout</button> 
-        </div> 
-    </nav>
+<body id="mappage">
+
+        <nav class="navbar navbar-expand">
+            <ul class="nav navbar-nav navbar-right">
+                {% if not g.user %}
+                <li><a href="/about">About</a> </li>
+                <li><a href="/signup">Sign up</a></li>
+                <li><a href="/login">Log in</a></li>
+                {% else %}
+                <li><a href="/home">Home</a></li>
+                <li><a href="/about">About</a> </li>
+                <li><a href="/user/1">Example User Page</a></li>
+                <li><a href="/areastats">Output Region Example</a></li>
+                <li><a href="/logout">Log out</a></li>
+                {% endif %}
+              </ul>
+            </div>
+          </nav>
     <div class="title2"><h1>PSO PayScale</h1></div>
 
 <div class="center">

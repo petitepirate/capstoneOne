@@ -26,7 +26,7 @@ class User(db.Model):
     image_url = db.Column(db.Text,
                           nullable=False, default=DEFAULT_IMG)
     password = db.Column(db.Text, nullable=False)
-    # jobs = db.relationship('Job')
+    jobs = db.relationship('Job')
     
     @classmethod
     def signup(cls, user_name, first_name, last_name, email, password, image_url):
@@ -84,4 +84,4 @@ class Job(db.Model):
         db.ForeignKey('users.id',  ondelete='cascade')
     )
 
-    # user = db.relationship('User')
+    user = db.relationship('User')
