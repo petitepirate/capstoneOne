@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, flash, redirect, session, g, abort
 from models import db, connect_db, User, Job
-from forms import NewUserForm, LoginForm
+from forms import NewUserForm, LoginForm, AddJobForm, EditUserForm
 from sqlalchemy.exc import IntegrityError
 import os
 
@@ -98,7 +98,7 @@ def login():
         if user:
             do_login(user)
             flash(f"Hello, {user.user_name}!", "success")
-            return redirect("/home")
+            return redirect(f"/user/{user.id}")
 
         flash("Invalid credentials.", 'danger')
 
@@ -114,20 +114,26 @@ def logout():
     return redirect("/")
 
 
-@app.route("/user/info/<int:user_id>", methods=["GET"])
+@app.route("/user/<int:user_id>", methods=["GET"])
 def user_page(user_id):
-    user = User.query.get_or_404(user_id)
-    image_url = user.image_url
-    return render_template('user_info.html',  user=user, image_url=image_url)
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/")
 
-@app.route("/users/<int:user_id>/edit")
+    user = User.query.get_or_404(user_id)
+    jobs = (Job.query.filter(Job.user_id == user_id).all())
+
+    return render_template('user_info.html', user=user, image=user.image_url, jobs=jobs)
+
+@app.route("/user/<int:user_id>/edit")
 def edit_user(user_id):
     """Show edit form"""
+    form = EditUserForm()
     user = User.query.get_or_404(user_id)
-    return render_template("edit_user.html", user=user)
+    return render_template("edit_user.html", user=user, form=form)
 
 
-@app.route('/users/<int:user_id>/edit', methods=["POST"])
+@app.route('/user/<int:user_id>/edit', methods=["POST"])
 def submit_edit(user_id):
     """Edit a user"""
 
@@ -141,7 +147,7 @@ def submit_edit(user_id):
     db.session.add(user)
     db.session.commit()
 
-    return redirect("/user/info/<int:user_id>")
+    return redirect(f"/user/{user.id}")
 
 
 #### HOME ROUTES ####
@@ -153,9 +159,9 @@ def enterpage():
 @app.route("/home")
 def homepage():
 
-    if not g.user:
-        flash("Access unauthorized.", "danger")
-        return redirect("/login")
+    # if not g.user:
+    #     flash("Access unauthorized.", "danger")
+    #     return redirect("/user/login")
 
     return render_template('index2.html')
 
@@ -175,11 +181,38 @@ def page_not_found(e):
 
 #### JOBS ROUTES #####
 
+@app.route("/user/<int:user_id>/addjob", methods=["GET"])
+def new_job(user_id):
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
 
+    user = User.query.get_or_404(user_id)
+    form = AddJobForm()
 
+    return render_template('add_job.html', user=user, form=form)
 
+@app.route("/user/<int:user_id>/addjob", methods=["POST"])
+def submit_job(user_id):
 
+    user = User.query.get_or_404(user_id)
+    form = AddJobForm()
 
+    if form.validate_on_submit():
+        job_title = form.job_title.data
+        location = form.location.data
+        start_year = form.start_year.data
+        day_rate = form.day_rate.data
+        user_id = f"{user.id}"
+
+        job= Job(job_title=job_title, location=location, start_year=start_year, day_rate=day_rate, user_id=user_id)
+
+        db.session.add(job)
+        db.session.commit()
+
+        return redirect(f"/user/{user.id}")
+    
+    return render_template('add_job.html', form=form)
 
 
 
@@ -190,7 +223,8 @@ def page_not_found(e):
 #### INITIAL ROUTES ####
 @app.route("/ocean/01", methods=["GET"])
 def ocean1_page():
-    return render_template('/initial_routes/square01.html')
+    
+    return redirect("/alaska")
     
 @app.route("/ocean/02", methods=["GET"])
 def ocean2_page():
@@ -320,4 +354,48 @@ def ocean32_page():
 #### INDIVIDUAL COUNTRIES ROUTES ####
 @app.route("/alaska", methods=["GET"])
 def alaska():
+    jobs = (Job.query.filter(Job.location == 'Alaska').all())
     return render_template('/countries/alaska.html')
+
+
+
+
+#### INDIVIDUAL COUNTRIES ROUTES ####
+@app.route("/areastats", methods=["GET"])
+def antartica():
+    # user = User.query.get_or_404(user_id)   
+
+    # if not g.user:
+    #     flash("Access unauthorized.", "danger")
+    #     return redirect("/home")
+
+    jobs = (Job.query.filter(Job.location == 'Antartica').all())
+    # pam = (Job.query.filter(Job.location == 'Antartica', Job.job_title == 'PAM').all())
+
+
+    return render_template('areastat.html', jobs=jobs )
+
+
+
+
+
+
+
+
+
+##############################################################################
+# Turn off all caching in Flask
+#   (useful for dev; in production, this kind of stuff is typically
+#   handled elsewhere)
+#
+# https://stackoverflow.com/questions/34066804/disabling-caching-in-flask
+
+@app.after_request
+def add_header(req):
+    """Add non-caching headers on every request."""
+
+    req.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+    req.headers["Pragma"] = "no-cache"
+    req.headers["Expires"] = "0"
+    req.headers['Cache-Control'] = 'public, max-age=0'
+    return req

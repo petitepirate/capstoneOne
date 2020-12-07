@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<div class="row">
+    <div class="col-sm-4">
+        <img src="{{ user.image_url }}" alt="Image for {{ user.user_name }}" id="profile-avatar" >
+        <h4 id="sidebar-username">{{ user.first_name }} {{user.last_name}}</h4>
+    </div>
+
+  <div class="col-sm-8">               
+    <h3>Job History</h3>
+    <h4> Jobs: on record: {{ user.jobs | length }}</h4>
+    <ul>
+    {% for job in jobs %}
+    <li>
+        <p><b>Job Title: </b> {{job.job_title}} - {{job.location}} - <b>Day Rate:</b> $ {{job.day_rate}}</p>
+    </li>
+    {% endfor %}
+    </ul>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm">
+        {% if g.user.id == user.id %}
+        <a href="/user/{{ user.id }}/edit" class="btn btn-outline-secondary">Edit Profile</a>
+        <a href="/user/{{ user.id }}/addjob" class="btn btn-outline-secondary">Add Job</a>
+        <form method="POST" action="/user/delete" class="form-inline">
+          <button class="btn btn-outline-danger ml-2">Delete Profile</button>
+        </form>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
