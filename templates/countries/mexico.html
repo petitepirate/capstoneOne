@@ -1,10 +1,25 @@
 {% extends 'base.html' %}
-{% block title %}Mexico{% endblock %}
+{% block title %}Mexico (Pacific Ocean){% endblock %}
 
 {% block content %}
-<h2>Mexico</h2>
-
-<p>Dropdown to pick what Job Title you're specifically looking for</p>
-<p>API Output to give you travel and vaccination info</p>
-
+<h2>Mexico (Pacific Ocean)</h2>
+<ul>
+    <li>Mexico (Pacific Ocean)</li>
+    <p> Display Average of 6 different Job Titles here in Cards </p>
+    <p>For regions with multiple countries or specific places, they will be able to click a link for extra specific information - api call for vaccine info will happen there</p>
+    <p>For regions with only one area, the link to the country name will be disabled and the API Output to give you travel and vaccination info will occur here directly</p>
+    <h3>Mexico (Pacific Ocean) Job History</h3>
+    
+    <div class="row">
+      <div class="col-sm-8">               
+        <h4> Jobs: on record: {{ jobs | length }}</h4>
+        <ul>
+        {% for job in jobs %}
+        <li>
+            <p><b>Job Title: </b> {{job.job_title}} - {{job.location}} - <b>Day Rate:</b> $ {{job.day_rate}}</p>
+        </li>
+        {% endfor %}
+        </ul>
+        </div>
+    </div>
 {% endblock %}

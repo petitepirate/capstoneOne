@@ -47,7 +47,7 @@ class User(db.Model):
         )
 
         db.session.add(user)
-        # db.session.commit()
+        db.session.commit()
         return user
 
     @classmethod
@@ -80,6 +80,7 @@ class Job(db.Model):
     location = db.Column(db.Text, nullable=False)
     start_year = db.Column(db.Integer, nullable=False)
     day_rate = db.Column(db.Integer, nullable=False)
+    cont_company = db.Column(db.Text, nullable=False)
     user_id = db.Column(db.Integer,
         db.ForeignKey('users.id',  ondelete='cascade')
     )
