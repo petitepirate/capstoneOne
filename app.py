@@ -2,9 +2,13 @@ from flask import Flask, render_template, request, flash, redirect, session, g, 
 from models import db, connect_db, User, Job
 from forms import NewUserForm, LoginForm, AddJobForm, EditUserForm
 from sqlalchemy.exc import IntegrityError
+from secrets import API_KEY
 import os
+import requests
+import pdb
 
 CURR_USER_KEY = "curr_user"
+BASE_API_URL = "https://api.tugo.com/v1/travelsafe/countries/"
 
 app = Flask(__name__)
 
@@ -424,12 +428,17 @@ def areastats():
     # if not g.user:
     #     flash("Access unauthorized.", "danger")
     #     return redirect("/home")
+    country = 'ZM'
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+  
 
     jobs = (Job.query.filter(Job.location == 'Antarctica').all())
     # pam = (Job.query.filter(Job.location == 'Antartica', Job.job_title == 'PAM').all())
 
 
-    return render_template('areastat.html', jobs=jobs )
+    return render_template('areastat.html', jobs=jobs, advisory=advisory) 
 ##############################################################
 
 @app.route("/alaska", methods=["GET"])
