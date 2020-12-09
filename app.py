@@ -19,7 +19,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get(
 app.config['SQLALCHEMY_ECHO'] = True
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', '12345678')
-
+app.config['API_KEY'] = os.environ.get('API_KEY', 'none')
 
 connect_db(app)
 db.create_all()
