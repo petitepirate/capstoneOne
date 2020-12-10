@@ -1,12 +1,18 @@
 {% extends 'base.html' %}
-{% block title %}Select Your Region{% endblock %}
+{% block title %}Region 27{% endblock %}
 
 {% block content %}
-<h2>Northern Pacific Ocean</h2>
-<ul>
-    <a href="/alaska"><li>Alaska</li></a>
-    <p>Display the 6 job titles and their average dayrate data from this region</p>
-    <p>For regions with multiple countries or specific places, they will be able to click a link for extra specific information - api call for vaccine info will happen there</p>
-    <p>For regions with only one area, the link to the country name will be disabled and the API Output to give you travel and vaccination info will occur here directly</p>
-</ul>
+
+<h2>
+    <a href="/brazil">Brazil</a> /
+    <a href="/uruguay">Uruguay</a> / 
+    <a href="/anarctica">Anarctica</a> / 
+    <a href="/chile">Chile</a> / 
+    <a href="/argentina">Argentina</a> / 
+    <a href="/falkland_islands">Falkland Islands</a>
+</h2>
+
+    <p>TODO: Display the 6 job titles and their average dayrate data from the average of the overall region</p>
+    <p>For more specific details of day-rates in individual countries, please click their link above</p>
+  
 {% endblock %}
