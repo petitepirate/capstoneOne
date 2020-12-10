@@ -272,7 +272,7 @@ def region7_page():
 def region8_page():
 
 
-    return render_template('/initial_routes/square08.html')
+    return redirect("/russia")
 
 @app.route("/region/09", methods=["GET"])
 def region9_page():
@@ -308,7 +308,7 @@ def region13_page():
 def region14_page():
 
 
-    return render_template('/initial_routes/square14.html')
+    return redirect("/home")
 
 @app.route("/region/15", methods=["GET"])
 def region15_page():
@@ -374,7 +374,7 @@ def region24_page():
 def region25_page():
 
 
-    return render_template('/initial_routes/square25.html')
+    return redirect("/home")
 
 @app.route("/region/26", methods=["GET"])
 def region26_page():
@@ -404,7 +404,7 @@ def region29_page():
 def region30_page():
 
 
-    return render_template('/initial_routes/square30.html')
+    return redirect("/home")
 
 @app.route("/region/31", methods=["GET"])
 def region31_page():
