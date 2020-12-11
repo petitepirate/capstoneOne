@@ -3,25 +3,35 @@
 
 {% block content %}
 <h2>Argentina</h2>
-
-    <p> Display Average of 6 different Job Titles here in Cards </p>
-
-    <br>
-    <h3>ADVISORY</h3>
-    <p>{{advisory}}</p>
-    
-    <h3>Argentina Job History</h3>
-    
-    <div class="row">
-      <div class="col-sm-8">               
-        <h4> Jobs: on record: {{ jobs | length }}</h4>
-        <ul>
-        {% for job in jobs %}
-        <li>
-            <p><b>Job Title: </b> {{job.job_title}} PSO Contractor: {{job.cont_company}} - {{job.location}} - <b>Day Rate:</b> $ {{job.day_rate}}</p>
-        </li>
-        {% endfor %}
-        </ul>
-        </div>
-    </div>
-{% endblock %}
+<div class="card">
+    <div class="card-body">
+  <p> Display Average of 6 different Job Titles here in Cards </p>
+  </div>
+  </div>
+  
+  <div class="card">
+    <div class="card-body">
+  <h3>ADVISORY</h3>
+  <p>{{advisory}}</p>
+  </div>
+  </div>
+  
+  <div class="card">
+    <div class="card-body">
+  <h3>Antartica Job History</h3>
+  
+  <div class="row">
+    <div class="col-sm-8">               
+      <h4> Jobs: on record: {{ jobs | length }}</h4>
+      <ul>
+      {% for job in jobs %}
+      <li>
+        <p><b>Job Title: </b> {{job.job_title}} <b></b>PSO Contractor:<b></b> {{job.cont_company}} - {{job.location}} - <b>Day Rate:</b> $ {{job.day_rate}}</p>
+      </li>
+      {% endfor %}
+      </ul>
+      </div>
+  </div>
+  </div>
+  </div>
+  {% endblock %}
