@@ -2,13 +2,21 @@
 
 {% block content %}
 <h3>Antartica</h3>
-
+<div class="card">
+  <div class="card-body">
 <p> Display Average of 6 different Job Titles here in Cards </p>
+</div>
+</div>
 
-<br>
+<div class="card">
+  <div class="card-body">
 <h3>ADVISORY</h3>
 <p>{{advisory}}</p>
+</div>
+</div>
 
+<div class="card">
+  <div class="card-body">
 <h3>Antartica Job History</h3>
 
 <div class="row">
@@ -17,11 +25,12 @@
     <ul>
     {% for job in jobs %}
     <li>
-      <p><b>Job Title: </b> {{job.job_title}} PSO Contractor: {{job.cont_company}} - {{job.location}} - <b>Day Rate:</b> $ {{job.day_rate}}</p>
+      <p><b>Job Title: </b> {{job.job_title}} <b></b>PSO Contractor:<b></b> {{job.cont_company}} - {{job.location}} - <b>Day Rate:</b> $ {{job.day_rate}}</p>
     </li>
     {% endfor %}
     </ul>
     </div>
 </div>
-
+</div>
+</div>
 {% endblock %}
