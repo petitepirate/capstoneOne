@@ -451,7 +451,7 @@ def alaska():
     advisory= data["entryExitRequirement"]["description"]
 
     jobs = (Job.query.filter(Job.location == "Alaska").all())
-    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    name = 'Alaska'  
     return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/angola", methods=["GET"])
@@ -465,7 +465,7 @@ def angola():
     advisory= data["entryExitRequirement"]["description"]
 
     jobs = (Job.query.filter(Job.location == "Angola").all())
-    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    name = 'Angola'  #*******************************************************************************TO FILL IN
     return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/antarctica", methods=["GET"])
@@ -479,7 +479,7 @@ def antarctica():
     advisory= data["entryExitRequirement"]["description"]
 
     jobs = (Job.query.filter(Job.location == "Antarctica").all())
-    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    name = 'Antartica'  #*******************************************************************************TO FILL IN
     return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/arctic_ocean", methods=["GET"])
@@ -494,7 +494,7 @@ def arctic_ocean():
     advisory= data["entryExitRequirement"]["description"]
     
     jobs = (Job.query.filter(Job.location == "Arctic Ocean").all())
-    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    name = 'Arctic Ocean'  #*******************************************************************************TO FILL IN
     return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/argentina", methods=["GET"])
@@ -509,7 +509,7 @@ def argentina():
     advisory= data["entryExitRequirement"]["description"]
     
     jobs = (Job.query.filter(Job.location == "Argentina").all())
-    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    name = 'Argentina'  #*******************************************************************************TO FILL IN
     return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/australia_newzealand", methods=["GET"])
@@ -524,7 +524,7 @@ def australia_newzealand():
     advisory= data["entryExitRequirement"]["description"]
     
     jobs = (Job.query.filter(Job.location == "Australia / New Zealand").all())
-    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    name = 'Australia & New Zealand'  #*******************************************************************************TO FILL IN
     return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/black_sea", methods=["GET"])
@@ -539,7 +539,7 @@ def black_sea():
     advisory= data["entryExitRequirement"]["description"]
     
     jobs = (Job.query.filter(Job.location == "Black Sea").all())
-    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    name = 'Black Sea'  #*******************************************************************************TO FILL IN
     return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/brazil", methods=["GET"])
@@ -554,7 +554,7 @@ def brazil():
     advisory= data["entryExitRequirement"]["description"]
     
     jobs = (Job.query.filter(Job.location == "Brazil").all())
-    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    name = 'Brazil'  #*******************************************************************************TO FILL IN
     return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/california", methods=["GET"])
@@ -569,7 +569,7 @@ def california():
     advisory= data["entryExitRequirement"]["description"]
     
     jobs = (Job.query.filter(Job.location == "California").all())
-    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    name = 'California'  #*******************************************************************************TO FILL IN
     return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/canada", methods=["GET"])
@@ -584,7 +584,7 @@ def canada():
     advisory= data["entryExitRequirement"]["description"]
     
     jobs = (Job.query.filter(Job.location == "Canada").all())
-    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    name = 'Canada'  #*******************************************************************************TO FILL IN
     return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/caribbean", methods=["GET"])
@@ -599,7 +599,7 @@ def caribbean():
     advisory= data["entryExitRequirement"]["description"]
     
     jobs = (Job.query.filter(Job.location == "Caribbean").all())
-    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    name = 'Caribbean'  #*******************************************************************************TO FILL IN
     return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/caspian_sea", methods=["GET"])
@@ -614,7 +614,7 @@ def caspian_sea():
     advisory= data["entryExitRequirement"]["description"]
     
     jobs = (Job.query.filter(Job.location == "Caspian Sea").all())
-    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    name = 'Caspian Sea'  #*******************************************************************************TO FILL IN
     return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/chile", methods=["GET"])
@@ -629,7 +629,7 @@ def chile():
     advisory= data["entryExitRequirement"]["description"]
     
     jobs = (Job.query.filter(Job.location == "Chile").all())
-    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    name = 'Chile'  #*******************************************************************************TO FILL IN
     return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/china_vietnam", methods=["GET"])
@@ -644,7 +644,7 @@ def china_vietnam():
     advisory= data["entryExitRequirement"]["description"]
     
     jobs = (Job.query.filter(Job.location == "China / Vietnam").all())
-    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    name = 'China & Vietnam'  #*******************************************************************************TO FILL IN
     return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/columbia", methods=["GET"])
@@ -659,7 +659,7 @@ def columbia():
     advisory= data["entryExitRequirement"]["description"]
     
     jobs = (Job.query.filter(Job.location == "Columbia").all())
-    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    name = 'Columbia'  #*******************************************************************************TO FILL IN
     return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/ecuador", methods=["GET"])
@@ -674,7 +674,7 @@ def ecuador():
     advisory= data["entryExitRequirement"]["description"]
     
     jobs = (Job.query.filter(Job.location == "Ecuador").all())
-    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    name = 'Ecuador'  #*******************************************************************************TO FILL IN
     return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/ethiopia", methods=["GET"])
@@ -689,7 +689,7 @@ def ethiopia():
     advisory= data["entryExitRequirement"]["description"]
     
     jobs = (Job.query.filter(Job.location == "Ethiopia").all())
-    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    name = 'Ethiopia'  #*******************************************************************************TO FILL IN
     return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/falkland_islands", methods=["GET"])
@@ -704,7 +704,7 @@ def falkland_islands():
     advisory= data["entryExitRequirement"]["description"]
     
     jobs = (Job.query.filter(Job.location == "Falkland Islands").all())
-    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    name = 'Falkland Islands'  #*******************************************************************************TO FILL IN
     return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/french_guiana", methods=["GET"])
@@ -719,7 +719,7 @@ def french_guiana():
     advisory= data["entryExitRequirement"]["description"]
     
     jobs = (Job.query.filter(Job.location == "French Guiana").all())
-    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    name = 'French Guiana'  #*******************************************************************************TO FILL IN
     return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/gabon", methods=["GET"])
@@ -734,7 +734,7 @@ def gabon():
     advisory= data["entryExitRequirement"]["description"]
     
     jobs = (Job.query.filter(Job.location == "Gabon").all())
-    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    name = 'Gabon'  #*******************************************************************************TO FILL IN
     return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/ghana", methods=["GET"])
@@ -749,7 +749,7 @@ def ghana():
     advisory= data["entryExitRequirement"]["description"]
     
     jobs = (Job.query.filter(Job.location == "Ghana").all())
-    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    name = 'Ghana'  #*******************************************************************************TO FILL IN
     return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/greenland", methods=["GET"])
@@ -764,7 +764,7 @@ def greenland():
     advisory= data["entryExitRequirement"]["description"]
     
     jobs = (Job.query.filter(Job.location == "Greenland").all())
-    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    name = 'Greenland'  #*******************************************************************************TO FILL IN
     return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/gulf_of_mexico", methods=["GET"])
@@ -779,7 +779,7 @@ def gulf_of_mexico():
     advisory= data["entryExitRequirement"]["description"]
     
     jobs = (Job.query.filter(Job.location == "Gulf of Mexico").all())
-    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    name = 'Gulf of Mexico'  #*******************************************************************************TO FILL IN
     return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/guyana", methods=["GET"])
@@ -794,7 +794,7 @@ def guyana():
     advisory= data["entryExitRequirement"]["description"]
     
     jobs = (Job.query.filter(Job.location == "Guyana").all())
-    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    name = 'Guyana'  #*******************************************************************************TO FILL IN
     return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/hawaii", methods=["GET"])
@@ -809,7 +809,7 @@ def hawaii():
     advisory= data["entryExitRequirement"]["description"]
     
     jobs = (Job.query.filter(Job.location == "Hawaii").all())
-    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    name = 'Hawaii'  #*******************************************************************************TO FILL IN
     return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/iceland", methods=["GET"])
@@ -824,7 +824,7 @@ def iceland():
     advisory= data["entryExitRequirement"]["description"]
     
     jobs = (Job.query.filter(Job.location == "Iceland").all())
-    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    name = 'Iceland'  #*******************************************************************************TO FILL IN
     return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/india_srilanka", methods=["GET"])
@@ -839,7 +839,7 @@ def india_srilanka():
     advisory= data["entryExitRequirement"]["description"]
     
     jobs = (Job.query.filter(Job.location == "India / Sri Lanka").all())
-    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    name = 'India & Sri Lanka'  #*******************************************************************************TO FILL IN
     return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/indonesia", methods=["GET"])
@@ -854,7 +854,7 @@ def indonesia():
     advisory= data["entryExitRequirement"]["description"]
     
     jobs = (Job.query.filter(Job.location == "Indonesia").all())
-    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    name = 'Indonesia'  #*******************************************************************************TO FILL IN
     return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/madagascar", methods=["GET"])
@@ -869,7 +869,7 @@ def madagascar():
     advisory= data["entryExitRequirement"]["description"]
     
     jobs = (Job.query.filter(Job.location == "Madagascar").all())
-    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    name = 'Madagascar'  #*******************************************************************************TO FILL IN
     return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/malaysia", methods=["GET"])
@@ -884,7 +884,7 @@ def malaysia():
     advisory= data["entryExitRequirement"]["description"]
     
     jobs = (Job.query.filter(Job.location == "Malaysia").all())
-    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    name = 'Malaysia'  #*******************************************************************************TO FILL IN
     return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/mauritania", methods=["GET"])
@@ -899,7 +899,7 @@ def mauritania():
     advisory= data["entryExitRequirement"]["description"]
     
     jobs = (Job.query.filter(Job.location == "Mauritania").all())
-    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    name = 'Mauritania'  #*******************************************************************************TO FILL IN
     return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/mediterranean", methods=["GET"])
@@ -914,7 +914,7 @@ def mediterranean():
     advisory= data["entryExitRequirement"]["description"]
     
     jobs = (Job.query.filter(Job.location == "Mediterranean Sea").all())
-    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    name = 'Mediterranean Sea'  #*******************************************************************************TO FILL IN
     return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/mexico", methods=["GET"])
@@ -929,7 +929,7 @@ def mexico():
     advisory= data["entryExitRequirement"]["description"]
     
     jobs = (Job.query.filter(Job.location == "Mexico (Pacific)").all())
-    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    name = 'Mexico (Pacific Ocean)'  #*******************************************************************************TO FILL IN
     return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/mozambique", methods=["GET"])
@@ -944,7 +944,7 @@ def mozambique():
     advisory= data["entryExitRequirement"]["description"]
     
     jobs = (Job.query.filter(Job.location == "Mozambique").all())
-    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    name = 'Mozambique'  #*******************************************************************************TO FILL IN
     return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/namibia", methods=["GET"])
@@ -959,7 +959,7 @@ def namibia():
     advisory= data["entryExitRequirement"]["description"]
     
     jobs = (Job.query.filter(Job.location == "Namibia").all())
-    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    name = 'Namibia'  #*******************************************************************************TO FILL IN
     return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/nigeria", methods=["GET"])
@@ -974,7 +974,7 @@ def nigeria():
     advisory= data["entryExitRequirement"]["description"]
     
     jobs = (Job.query.filter(Job.location == "Nigeria").all())
-    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    name = 'Nigeria'  #*******************************************************************************TO FILL IN
     return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/north_atlantic", methods=["GET"])
@@ -989,7 +989,7 @@ def north_atlantic():
     advisory= data["entryExitRequirement"]["description"]
     
     jobs = (Job.query.filter(Job.location == "US East Coast (N. Atlantic Ocean)").all())
-    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    name = 'US East Coast (N. Atlantic Ocean)'  #*******************************************************************************TO FILL IN
     return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/north_sea", methods=["GET"])
@@ -1004,7 +1004,7 @@ def north_sea():
     advisory= data["entryExitRequirement"]["description"]
     
     jobs = (Job.query.filter(Job.location == "North Sea").all())
-    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    name = 'North Sea'  #*******************************************************************************TO FILL IN
     return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/nw_africa_morocco", methods=["GET"])
@@ -1019,7 +1019,7 @@ def nw_africa_morocco():
     advisory= data["entryExitRequirement"]["description"]
     
     jobs = (Job.query.filter(Job.location == "NW Africa / Morocco").all())
-    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    name = 'NW Africa / Morocco'  #*******************************************************************************TO FILL IN
     return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/persian_gulf", methods=["GET"])
@@ -1034,7 +1034,7 @@ def persian_gulf():
     advisory= data["entryExitRequirement"]["description"]
     
     jobs = (Job.query.filter(Job.location == "Persian Gulf").all())
-    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    name = 'Persian Gulf'  #*******************************************************************************TO FILL IN
     return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/peru", methods=["GET"])
@@ -1049,7 +1049,7 @@ def peru():
     advisory= data["entryExitRequirement"]["description"]
     
     jobs = (Job.query.filter(Job.location == "Peru").all())
-    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    name = 'Peru'  #*******************************************************************************TO FILL IN
     return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/philippines", methods=["GET"])
@@ -1064,7 +1064,7 @@ def philippines():
     advisory= data["entryExitRequirement"]["description"]
     
     jobs = (Job.query.filter(Job.location == "Philippines").all())
-    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    name = 'Philippines'  #*******************************************************************************TO FILL IN
     return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/russia", methods=["GET"])
@@ -1079,7 +1079,7 @@ def russia():
     advisory= data["entryExitRequirement"]["description"]
     
     jobs = (Job.query.filter(Job.location == "Russia").all())
-    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    name = 'Russia'  #*******************************************************************************TO FILL IN
     return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/s_china", methods=["GET"])
@@ -1094,7 +1094,7 @@ def s_china():
     advisory= data["entryExitRequirement"]["description"]
     
     jobs = (Job.query.filter(Job.location == "Southern China").all())
-    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    name = 'Southern China'  #*******************************************************************************TO FILL IN
     return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/sierra_leone", methods=["GET"])
@@ -1109,7 +1109,7 @@ def sierra_leone():
     advisory= data["entryExitRequirement"]["description"]
     
     jobs = (Job.query.filter(Job.location == "Sierra Leone").all())
-    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    name = 'Sierra Leone'  #*******************************************************************************TO FILL IN
     return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/skorea_japan", methods=["GET"])
@@ -1124,7 +1124,7 @@ def skorea_japan():
     advisory= data["entryExitRequirement"]["description"]
     
     jobs = (Job.query.filter(Job.location == "S. Korea / Japan").all())
-    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    name = 'South Korea & Japan'  #*******************************************************************************TO FILL IN
     return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/somalia", methods=["GET"])
@@ -1139,7 +1139,7 @@ def somalia():
     advisory= data["entryExitRequirement"]["description"]
     
     jobs = (Job.query.filter(Job.location == "Somalia").all())
-    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    name = 'Somalia'  #*******************************************************************************TO FILL IN
     return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/south_africa", methods=["GET"])
@@ -1154,7 +1154,7 @@ def south_africa():
     advisory= data["entryExitRequirement"]["description"]
     
     jobs = (Job.query.filter(Job.location == "South Africa").all())
-    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    name = 'South Africa'  #*******************************************************************************TO FILL IN
     return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/suriname", methods=["GET"])
@@ -1176,7 +1176,7 @@ def uruguay():
 
     if not g.user:
         flash("Access unauthorized.", "danger")
-        return redirect("/home")
+        return redirect("/")
     country = 'UY'
     res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
     data=res.json()
@@ -1188,7 +1188,7 @@ def uruguay():
 
 
 
-## break out res/data/advisory into a function and call it in all the country routes
+## break out res/data/advisory into a function and call it in all the country routes  (return redirect should be to "/", NOT '/home')
 ## make routes dynamic with {{Country}}
 
 
