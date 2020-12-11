@@ -423,11 +423,10 @@ def region32_page():
 #### EXAMPLE ####
 @app.route("/areastats", methods=["GET"])
 def areastats():
-    # user = User.query.get_or_404(user_id)   
 
-    # if not g.user:
-    #     flash("Access unauthorized.", "danger")
-    #     return redirect("/home")
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
     country = 'ZM'
     res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
     data=res.json()
@@ -443,258 +442,754 @@ def areastats():
 
 @app.route("/alaska", methods=["GET"])
 def alaska():
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+    country = 'ZM'
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+
     jobs = (Job.query.filter(Job.location == "Alaska").all())
-    return render_template('/countries/alaska.html', jobs=jobs)
+    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/angola", methods=["GET"])
 def angola():
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+    country = 'AO'
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+
     jobs = (Job.query.filter(Job.location == "Angola").all())
-    return render_template('/countries/angola.html', jobs=jobs)
+    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/antarctica", methods=["GET"])
 def antarctica():
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+    country = 'AQ'
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+
     jobs = (Job.query.filter(Job.location == "Antarctica").all())
-    return render_template('/countries/antarctic.html', jobs=jobs)
+    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/arctic_ocean", methods=["GET"])
 def arctic_ocean():
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+    country = 'GL'  # No real country code for arctic - uses greenland since thats the likely launching place
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+    
     jobs = (Job.query.filter(Job.location == "Arctic Ocean").all())
-    return render_template('/countries/arctic_ocean.html', jobs=jobs)
+    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/argentina", methods=["GET"])
 def argentina():
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+    country = 'AR'
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+    
     jobs = (Job.query.filter(Job.location == "Argentina").all())
-    return render_template('/countries/argentina.html', jobs=jobs)
+    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/australia_newzealand", methods=["GET"])
 def australia_newzealand():
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+    country = 'AU'
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+    
     jobs = (Job.query.filter(Job.location == "Australia / New Zealand").all())
-    return render_template('/countries/australia_newzealand.html', jobs=jobs)
+    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/black_sea", methods=["GET"])
 def black_sea():
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+    country = 'TR'  #uses Turkey
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+    
     jobs = (Job.query.filter(Job.location == "Black Sea").all())
-    return render_template('/countries/black_sea.html', jobs=jobs)
+    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/brazil", methods=["GET"])
 def brazil():
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+    country = 'BR'
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+    
     jobs = (Job.query.filter(Job.location == "Brazil").all())
-    return render_template('/countries/brazil.html', jobs=jobs)
+    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/california", methods=["GET"])
 def california():
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+    country = 'US'
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+    
     jobs = (Job.query.filter(Job.location == "California").all())
-    return render_template('/countries/california.html', jobs=jobs)
+    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/canada", methods=["GET"])
 def canada():
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+    country = 'US' #App is a canadian travel app and so doesnt have canadian advisories since that is their home country
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+    
     jobs = (Job.query.filter(Job.location == "Canada").all())
-    return render_template('/countries/canada.html', jobs=jobs)
+    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/caribbean", methods=["GET"])
 def caribbean():
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+    country = 'BS'  #uses Bahamas 
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+    
     jobs = (Job.query.filter(Job.location == "Caribbean").all())
-    return render_template('/countries/caribbean.html', jobs=jobs)
+    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/caspian_sea", methods=["GET"])
 def caspian_sea():
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+    country = 'IR'  #uses Iran
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+    
     jobs = (Job.query.filter(Job.location == "Caspian Sea").all())
-    return render_template('/countries/caspian_sea.html', jobs=jobs)
+    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/chile", methods=["GET"])
 def chile():
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+    country = 'CL'
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+    
     jobs = (Job.query.filter(Job.location == "Chile").all())
-    return render_template('/countries/chile.html', jobs=jobs)
+    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/china_vietnam", methods=["GET"])
 def china_vietnam():
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+    country = 'CN'
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+    
     jobs = (Job.query.filter(Job.location == "China / Vietnam").all())
-    return render_template('/countries/china_vietnam.html', jobs=jobs)
+    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/columbia", methods=["GET"])
 def columbia():
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+    country = 'CO'
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+    
     jobs = (Job.query.filter(Job.location == "Columbia").all())
-    return render_template('/countries/columbia.html', jobs=jobs)
+    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/ecuador", methods=["GET"])
 def ecuador():
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+    country = 'EC'
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+    
     jobs = (Job.query.filter(Job.location == "Ecuador").all())
-    return render_template('/countries/ecuador.html', jobs=jobs)
+    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/ethiopia", methods=["GET"])
 def ethiopia():
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+    country = 'ET'
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+    
     jobs = (Job.query.filter(Job.location == "Ethiopia").all())
-    return render_template('/countries/ethiopia.html', jobs=jobs)
+    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/falkland_islands", methods=["GET"])
 def falkland_islands():
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+    country = 'FK'
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+    
     jobs = (Job.query.filter(Job.location == "Falkland Islands").all())
-    return render_template('/countries/falkland_islands.html', jobs=jobs)
+    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/french_guiana", methods=["GET"])
 def french_guiana():
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+    country = 'GF'
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+    
     jobs = (Job.query.filter(Job.location == "French Guiana").all())
-    return render_template('/countries/french_guiana.html', jobs=jobs)
+    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/gabon", methods=["GET"])
 def gabon():
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+    country = 'GA'
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+    
     jobs = (Job.query.filter(Job.location == "Gabon").all())
-    return render_template('/countries/gabon.html', jobs=jobs)
+    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/ghana", methods=["GET"])
 def ghana():
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+    country = 'GH'
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+    
     jobs = (Job.query.filter(Job.location == "Ghana").all())
-    return render_template('/countries/ghana.html', jobs=jobs)
+    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/greenland", methods=["GET"])
 def greenland():
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+    country = 'GL'
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+    
     jobs = (Job.query.filter(Job.location == "Greenland").all())
-    return render_template('/countries/greenland.html', jobs=jobs)
+    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/gulf_of_mexico", methods=["GET"])
 def gulf_of_mexico():
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+    country = 'US'
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+    
     jobs = (Job.query.filter(Job.location == "Gulf of Mexico").all())
-    return render_template('/countries/gulf_of_mexico.html', jobs=jobs)
+    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/guyana", methods=["GET"])
 def guyana():
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+    country = 'GY'
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+    
     jobs = (Job.query.filter(Job.location == "Guyana").all())
-    return render_template('/countries/guyana.html', jobs=jobs)
+    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/hawaii", methods=["GET"])
 def hawaii():
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+    country = 'US'
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+    
     jobs = (Job.query.filter(Job.location == "Hawaii").all())
-    return render_template('/countries/hawaii.html', jobs=jobs)
+    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/iceland", methods=["GET"])
 def iceland():
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+    country = 'IS'
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+    
     jobs = (Job.query.filter(Job.location == "Iceland").all())
-    return render_template('/countries/iceland.html', jobs=jobs)
+    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/india_srilanka", methods=["GET"])
 def india_srilanka():
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+    country = 'IN'
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+    
     jobs = (Job.query.filter(Job.location == "India / Sri Lanka").all())
-    return render_template('/countries/india_srilanka.html', jobs=jobs)
+    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/indonesia", methods=["GET"])
 def indonesia():
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+    country = 'ID'
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+    
     jobs = (Job.query.filter(Job.location == "Indonesia").all())
-    return render_template('/countries/indonesia.html', jobs=jobs)
+    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/madagascar", methods=["GET"])
 def madagascar():
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+    country = 'MG'
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+    
     jobs = (Job.query.filter(Job.location == "Madagascar").all())
-    return render_template('/countries/madagascar.html', jobs=jobs)
+    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/malaysia", methods=["GET"])
 def malaysia():
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+    country = 'MY'
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+    
     jobs = (Job.query.filter(Job.location == "Malaysia").all())
-    return render_template('/countries/malaysia.html', jobs=jobs)
+    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/mauritania", methods=["GET"])
 def mauritania():
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+    country = 'MR'
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+    
     jobs = (Job.query.filter(Job.location == "Mauritania").all())
-    return render_template('/countries/mauritania.html', jobs=jobs)
+    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/mediterranean", methods=["GET"])
 def mediterranean():
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+    country = 'EG' #uses egypt
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+    
     jobs = (Job.query.filter(Job.location == "Mediterranean Sea").all())
-    return render_template('/countries/mediterranean.html', jobs=jobs)
+    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/mexico", methods=["GET"])
 def mexico():
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+    country = 'MX'
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+    
     jobs = (Job.query.filter(Job.location == "Mexico (Pacific)").all())
-    return render_template('/countries/mexico.html', jobs=jobs)
+    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/mozambique", methods=["GET"])
 def mozambique():
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+    country = 'MZ'
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+    
     jobs = (Job.query.filter(Job.location == "Mozambique").all())
-    return render_template('/countries/mozambique.html', jobs=jobs)
+    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/namibia", methods=["GET"])
 def namibia():
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+    country = 'NA'
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+    
     jobs = (Job.query.filter(Job.location == "Namibia").all())
-    return render_template('/countries/namibia.html', jobs=jobs)
+    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/nigeria", methods=["GET"])
 def nigeria():
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+    country = 'NG'
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+    
     jobs = (Job.query.filter(Job.location == "Nigeria").all())
-    return render_template('/countries/nigeria.html', jobs=jobs)
+    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/north_atlantic", methods=["GET"])
 def north_atlantic():
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+    country = 'US'
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+    
     jobs = (Job.query.filter(Job.location == "US East Coast (N. Atlantic Ocean)").all())
-    return render_template('/countries/north_atlantic.html', jobs=jobs)
+    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/north_sea", methods=["GET"])
 def north_sea():
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+    country = 'UK'  #uses england but could use norway
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+    
     jobs = (Job.query.filter(Job.location == "North Sea").all())
-    return render_template('/countries/north_sea.html', jobs=jobs)
+    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/nw_africa_morocco", methods=["GET"])
 def nw_africa_morocco():
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+    country = 'MA'
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+    
     jobs = (Job.query.filter(Job.location == "NW Africa / Morocco").all())
-    return render_template('/countries/nw_africa_morocco.html', jobs=jobs)
+    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/persian_gulf", methods=["GET"])
 def persian_gulf():
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+    country = 'QA' #uses Qatar
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+    
     jobs = (Job.query.filter(Job.location == "Persian Gulf").all())
-    return render_template('/countries/persian_gulf.html', jobs=jobs)
+    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/peru", methods=["GET"])
 def peru():
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+    country = 'PE'
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+    
     jobs = (Job.query.filter(Job.location == "Peru").all())
-    return render_template('/countries/peru.html', jobs=jobs)
+    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/philippines", methods=["GET"])
 def philippines():
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+    country = 'Ph'
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+    
     jobs = (Job.query.filter(Job.location == "Philippines").all())
-    return render_template('/countries/philippines.html', jobs=jobs)
+    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/russia", methods=["GET"])
 def russia():
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+    country = 'RU'
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+    
     jobs = (Job.query.filter(Job.location == "Russia").all())
-    return render_template('/countries/russia.html', jobs=jobs)
+    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/s_china", methods=["GET"])
 def s_china():
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+    country = 'CN'
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+    
     jobs = (Job.query.filter(Job.location == "Southern China").all())
-    return render_template('/countries/s_china.html', jobs=jobs)
+    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/sierra_leone", methods=["GET"])
 def sierra_leone():
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+    country = 'SL'
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+    
     jobs = (Job.query.filter(Job.location == "Sierra Leone").all())
-    return render_template('/countries/sierra_leone.html', jobs=jobs)
+    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/skorea_japan", methods=["GET"])
 def skorea_japan():
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+    country = 'JP'
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+    
     jobs = (Job.query.filter(Job.location == "S. Korea / Japan").all())
-    return render_template('/countries/skorea_japan.html', jobs=jobs)
+    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/somalia", methods=["GET"])
 def somalia():
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+    country = 'SO'
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+    
     jobs = (Job.query.filter(Job.location == "Somalia").all())
-    return render_template('/countries/somalia.html', jobs=jobs)
+    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/south_africa", methods=["GET"])
 def south_africa():
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+    country = 'ZA'
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+    
     jobs = (Job.query.filter(Job.location == "South Africa").all())
-    return render_template('/countries/south_africa.html', jobs=jobs)
+    name = 'XXXXXXXXXXXXXXXXXX'  #*******************************************************************************TO FILL IN
+    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/suriname", methods=["GET"])
 def suriname():
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+    country = 'SR'
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+    name= 'Suriname'
     jobs = (Job.query.filter(Job.location == "Suriname").all())
-    return render_template('/countries/suriname.html', jobs=jobs)
+    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 @app.route("/uruguay", methods=["GET"])
 def uruguay():
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+    country = 'UY'
+    res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+    data=res.json()
+    advisory= data["entryExitRequirement"]["description"]
+    name = 'Uruguay'
+
     jobs = (Job.query.filter(Job.location == "Uruguay").all())
-    return render_template('/countries/uruguay.html', jobs=jobs)
+    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
 
 
 
-
-
+## break out res/data/advisory into a function and call it in all the country routes
+## make routes dynamic with {{Country}}
 
 
 
