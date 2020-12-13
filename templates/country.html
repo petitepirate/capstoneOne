@@ -6,6 +6,9 @@
 <div class="card">
     <div class="card-body">
   <p> Display Average of 6 different Job Titles here in Cards </p>
+  {% for rate in PSO_highest %}
+  <p>Highest dayrate: {{rate.day_rate}}</p>
+  {% endfor %}
   </div>
   </div>
   
@@ -26,7 +29,7 @@
       <ul>
       {% for job in jobs %}
       <li>
-        <p><b>Job Title: </b> {{job.job_title}} <b></b>PSO Contractor:<b></b> {{job.cont_company}} - {{job.location}} - <b>Day Rate:</b> $ {{job.day_rate}}</p>
+        <p><b>Job Title: </b> {{job.job_title}} <b>PSO Contractor:</b> {{job.cont_company}} - {{job.location}} - <b>Day Rate:</b> $ {{job.day_rate}}</p>
       </li>
       {% endfor %}
       </ul>

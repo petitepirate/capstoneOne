@@ -86,3 +86,9 @@ class Job(db.Model):
     )
 
     user = db.relationship('User')
+
+    # @classmethod
+    # def get_highest(cls, location):
+
+    #     highest_dayrate = cls.query(Job.day_rate).filter(Job.job_title =='Lead PSO', Job.location == f'{location}').order_by(Job.day_rate.desc()).limit(1).all()
+    #     return highest_dayrate
