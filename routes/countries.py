@@ -4,27 +4,28 @@ from . import routes
 from secrets import API_KEY
 import requests
 BASE_API_URL = "https://api.tugo.com/v1/travelsafe/countries/"
-from helpers import get_advisory, check_user
+from helpers import get_advisory, check_user, get_average, get_list, get_jobs
+from sqlalchemy import func
 
 CURR_USER_KEY = "curr_user"
-
+TITLES= ('Lead PAM', 'Lead PSO', 'Lead PSO/PAM', 'PSO/PAM', 'PAM', 'PSO')
 
 @routes.route("/alaska", methods=["GET"])
 def alaska():
     if not g.user:
         flash("Access unauthorized.", "danger")
         return redirect("/home")
+
     country = 'US'
     name = 'Alaska'  
     advisory = get_advisory(country)
-    
-    PSO_highest= (Job.query.filter(Job.job_title =='Lead PSO', Job.location == f"{name}").order_by(Job.day_rate.desc()).limit(1).all())   #.order_by(Job.day_rate.desc()).limit(1)
-    print('************************************************************')
-    print(PSO_highest)
-    jobs = (Job.query.filter(Job.location == f"{name}").all())
-    print('************************************************************')
-    print(jobs)
-    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name, PSO_highest=PSO_highest)
+
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
+
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
 @routes.route("/angola", methods=["GET"])
 def angola():
@@ -34,9 +35,13 @@ def angola():
     country = 'AO'
     name = 'Angola' 
     advisory = get_advisory(country)
-    jobs = (Job.query.filter(Job.location == f"{name}").all())
-    PSO_highest= Job.get_highest('Lead PAM', f"{name}")
-    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name, PSO_highest=PSO_highest)
+
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
+
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
 @routes.route("/antarctica", methods=["GET"])
 def antarctica():
@@ -46,9 +51,13 @@ def antarctica():
     country = 'AQ'
     name = 'Antartica'
     advisory = get_advisory(country)
-    jobs = (Job.query.filter(Job.location == f"{name}").all())
 
-    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
+
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
 @routes.route("/arctic_ocean", methods=["GET"])
 def arctic_ocean():
@@ -59,9 +68,13 @@ def arctic_ocean():
     country = 'GL'  # No real country code for arctic - uses greenland since thats the likely launching place
     name = 'Arctic Ocean'  
     advisory = get_advisory(country)
-    jobs = (Job.query.filter(Job.location == f"{name}").all())
 
-    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
+
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
 @routes.route("/argentina", methods=["GET"])
 def argentina():
@@ -72,10 +85,13 @@ def argentina():
     country = 'AR'
     name = 'Argentina'  
     advisory = get_advisory(country)
-    jobs = (Job.query.filter(Job.location == f"{name}").all())
 
-    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
 
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 @routes.route("/australia_newzealand", methods=["GET"])
 def australia_newzealand():
 
@@ -85,9 +101,13 @@ def australia_newzealand():
     country = 'AU'
     name = 'Australia & New Zealand'  
     advisory = get_advisory(country)
-    jobs = (Job.query.filter(Job.location == f"{name}").all())
 
-    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
+
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
 @routes.route("/black_sea", methods=["GET"])
 def black_sea():
@@ -98,9 +118,13 @@ def black_sea():
     country = 'TR'  #uses Turkey
     name = 'Black Sea'  
     advisory = get_advisory(country)
-    jobs = (Job.query.filter(Job.location == f"{name}").all())
 
-    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
+
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
 @routes.route("/brazil", methods=["GET"])
 def brazil():
@@ -111,9 +135,13 @@ def brazil():
     country = 'BR'
     name = 'Brazil'  
     advisory = get_advisory(country)
-    jobs = (Job.query.filter(Job.location == f"{name}").all())
 
-    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
+
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
 @routes.route("/california", methods=["GET"])
 def california():
@@ -124,9 +152,13 @@ def california():
     country = 'US'
     name = 'California'  
     advisory = get_advisory(country)
-    jobs = (Job.query.filter(Job.location == f"{name}").all())
 
-    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
+
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
 @routes.route("/canada", methods=["GET"])
 def canada():
@@ -137,9 +169,13 @@ def canada():
     country = 'US' #api is a canadian travel api and so doesnt have canadian advisories since that is their home country
     name = 'Canada'  
     advisory = get_advisory(country)
-    jobs = (Job.query.filter(Job.location == f"{name}").all())
 
-    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
+
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
 @routes.route("/caribbean", methods=["GET"])
 def caribbean():
@@ -150,9 +186,13 @@ def caribbean():
     country = 'BS'  #uses Bahamas 
     name = 'Caribbean'  
     advisory = get_advisory(country)
-    jobs = (Job.query.filter(Job.location == f"{name}").all())
 
-    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
+
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
 @routes.route("/caspian_sea", methods=["GET"])
 def caspian_sea():
@@ -163,9 +203,13 @@ def caspian_sea():
     country = 'IR'  #uses Iran
     name = 'Caspian Sea'  
     advisory = get_advisory(country)
-    jobs = (Job.query.filter(Job.location == f"{name}").all())
 
-    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
+
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
 @routes.route("/chile", methods=["GET"])
 def chile():
@@ -176,9 +220,13 @@ def chile():
     country = 'CL'
     name = 'Chile'  
     advisory = get_advisory(country)
-    jobs = (Job.query.filter(Job.location == f"{name}").all())
 
-    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
+
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
 @routes.route("/china_vietnam", methods=["GET"])
 def china_vietnam():
@@ -189,9 +237,13 @@ def china_vietnam():
     country = 'CN'
     name = 'China & Vietnam'  
     advisory = get_advisory(country)
-    jobs = (Job.query.filter(Job.location == f"{name}").all())
 
-    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
+
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
 @routes.route("/columbia", methods=["GET"])
 def columbia():
@@ -202,9 +254,13 @@ def columbia():
     country = 'CO'
     name = 'Columbia'  
     advisory = get_advisory(country)
-    jobs = (Job.query.filter(Job.location == f"{name}").all())
 
-    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
+
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
 @routes.route("/ecuador", methods=["GET"])
 def ecuador():
@@ -215,9 +271,13 @@ def ecuador():
     country = 'EC'
     name = 'Ecuador'  
     advisory = get_advisory(country)
-    jobs = (Job.query.filter(Job.location == f"{name}").all())
 
-    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
+
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
 @routes.route("/ethiopia", methods=["GET"])
 def ethiopia():
@@ -228,9 +288,13 @@ def ethiopia():
     country = 'ET'
     name = 'Ethiopia'  
     advisory = get_advisory(country)
-    jobs = (Job.query.filter(Job.location == f"{name}").all())
 
-    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
+
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
 @routes.route("/falkland_islands", methods=["GET"])
 def falkland_islands():
@@ -241,9 +305,13 @@ def falkland_islands():
     country = 'FK'
     name = 'Falkland Islands'  
     advisory = get_advisory(country)
-    jobs = (Job.query.filter(Job.location == f"{name}").all())
 
-    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
+
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
 @routes.route("/french_guiana", methods=["GET"])
 def french_guiana():
@@ -254,9 +322,13 @@ def french_guiana():
     country = 'GF'
     name = 'French Guiana'  
     advisory = get_advisory(country)
-    jobs = (Job.query.filter(Job.location == f"{name}").all())
 
-    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
+
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
 @routes.route("/gabon", methods=["GET"])
 def gabon():
@@ -267,9 +339,13 @@ def gabon():
     country = 'GA'
     name = 'Gabon'  
     advisory = get_advisory(country)
-    jobs = (Job.query.filter(Job.location == f"{name}").all())
 
-    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
+
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
 @routes.route("/ghana", methods=["GET"])
 def ghana():
@@ -281,9 +357,13 @@ def ghana():
     jobs = (Job.query.filter(Job.location == "Ghana").all())
     name = 'Ghana'  
     advisory = get_advisory(country)
-    jobs = (Job.query.filter(Job.location == f"{name}").all())
 
-    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
+
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
 @routes.route("/greenland", methods=["GET"])
 def greenland():
@@ -294,9 +374,13 @@ def greenland():
     country = 'GL'
     name = 'Greenland'  
     advisory = get_advisory(country)
-    jobs = (Job.query.filter(Job.location == f"{name}").all())
 
-    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
+
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
 @routes.route("/gulf_of_mexico", methods=["GET"])
 def gulf_of_mexico():
@@ -307,9 +391,13 @@ def gulf_of_mexico():
     country = 'US'
     name = 'Gulf of Mexico'  
     advisory = get_advisory(country)
-    jobs = (Job.query.filter(Job.location == f"{name}").all())
 
-    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
+
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
 @routes.route("/guyana", methods=["GET"])
 def guyana():
@@ -320,9 +408,13 @@ def guyana():
     country = 'GY'
     name = 'Guyana'  
     advisory = get_advisory(country)
-    jobs = (Job.query.filter(Job.location == f"{name}").all())
 
-    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
+
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
 @routes.route("/hawaii", methods=["GET"])
 def hawaii():
@@ -333,9 +425,13 @@ def hawaii():
     country = 'US'
     name = 'Hawaii'  
     advisory = get_advisory(country)
-    jobs = (Job.query.filter(Job.location == f"{name}").all())
 
-    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
+
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
 @routes.route("/iceland", methods=["GET"])
 def iceland():
@@ -346,9 +442,13 @@ def iceland():
     country = 'IS'
     name = 'Iceland'  
     advisory = get_advisory(country)
-    jobs = (Job.query.filter(Job.location == f"{name}").all())
 
-    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
+
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
 @routes.route("/india_srilanka", methods=["GET"])
 def india_srilanka():
@@ -359,9 +459,13 @@ def india_srilanka():
     country = 'IN'
     name = 'India & Sri Lanka'  
     advisory = get_advisory(country)
-    jobs = (Job.query.filter(Job.location == f"{name}").all())
 
-    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
+
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
 @routes.route("/indonesia", methods=["GET"])
 def indonesia():
@@ -372,9 +476,13 @@ def indonesia():
     country = 'ID'
     name = 'Indonesia'  
     advisory = get_advisory(country)
-    jobs = (Job.query.filter(Job.location == f"{name}").all())
 
-    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
+
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
 @routes.route("/madagascar", methods=["GET"])
 def madagascar():
@@ -385,9 +493,13 @@ def madagascar():
     country = 'MG'
     name = 'Madagascar'  
     advisory = get_advisory(country)
-    jobs = (Job.query.filter(Job.location == f"{name}").all())  
-   
-    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
+
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
+
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
 @routes.route("/malaysia", methods=["GET"])
 def malaysia():
@@ -398,9 +510,13 @@ def malaysia():
     country = 'MY'
     name = 'Malaysia'  
     advisory = get_advisory(country)
-    jobs = (Job.query.filter(Job.location == f"{name}").all())
 
-    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
+
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
 @routes.route("/mauritania", methods=["GET"])
 def mauritania():
@@ -411,9 +527,13 @@ def mauritania():
     country = 'MR'
     name = 'Mauritania'  
     advisory = get_advisory(country)
-    jobs = (Job.query.filter(Job.location == f"{name}").all())
 
-    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
+
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
 @routes.route("/mediterranean", methods=["GET"])
 def mediterranean():
@@ -424,9 +544,13 @@ def mediterranean():
     country = 'EG' #uses egypt
     name = 'Mediterranean Sea'  
     advisory = get_advisory(country)
-    jobs = (Job.query.filter(Job.location == f"{name}").all())
 
-    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
+
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
 @routes.route("/mexico", methods=["GET"])
 def mexico():
@@ -437,9 +561,13 @@ def mexico():
     country = 'MX'
     name = 'Mexico (Pacific Ocean)'  
     advisory = get_advisory(country)
-    jobs = (Job.query.filter(Job.location == f"{name}").all())
 
-    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
+
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
 @routes.route("/mozambique", methods=["GET"])
 def mozambique():
@@ -450,9 +578,13 @@ def mozambique():
     country = 'MZ'
     name = 'Mozambique'  
     advisory = get_advisory(country)
-    jobs = (Job.query.filter(Job.location == f"{name}").all())
 
-    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
+
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
 @routes.route("/namibia", methods=["GET"])
 def namibia():
@@ -463,9 +595,13 @@ def namibia():
     country = 'NA'
     name = 'Namibia'  
     advisory = get_advisory(country)
-    jobs = (Job.query.filter(Job.location == f"{name}").all())
 
-    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
+
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
 @routes.route("/nigeria", methods=["GET"])
 def nigeria():
@@ -476,9 +612,13 @@ def nigeria():
     country = 'NG'
     name = 'Nigeria'  
     advisory = get_advisory(country)
-    jobs = (Job.query.filter(Job.location == f"{name}").all())
 
-    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
+
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
 @routes.route("/north_atlantic", methods=["GET"])
 def north_atlantic():
@@ -489,9 +629,13 @@ def north_atlantic():
     country = 'US'
     name = 'US East Coast (N. Atlantic Ocean)'  
     advisory = get_advisory(country)
-    jobs = (Job.query.filter(Job.location == f"{name}").all())
 
-    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
+
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
 @routes.route("/north_sea", methods=["GET"])
 def north_sea():
@@ -502,9 +646,13 @@ def north_sea():
     country = 'UK'  #uses england but could use norway
     name = 'North Sea'  
     advisory = get_advisory(country)
-    jobs = (Job.query.filter(Job.location == f"{name}").all())
 
-    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
+
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
 @routes.route("/nw_africa_morocco", methods=["GET"])
 def nw_africa_morocco():
@@ -515,9 +663,13 @@ def nw_africa_morocco():
     country = 'MA'
     name = 'NW Africa / Morocco'  
     advisory = get_advisory(country)
-    jobs = (Job.query.filter(Job.location == f"{name}").all())
 
-    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
+
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
 @routes.route("/persian_gulf", methods=["GET"])
 def persian_gulf():
@@ -528,9 +680,13 @@ def persian_gulf():
     country = 'QA' #uses Qatar
     name = 'Persian Gulf'  
     advisory = get_advisory(country)
-    jobs = (Job.query.filter(Job.location == f"{name}").all())
 
-    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
+
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
 @routes.route("/peru", methods=["GET"])
 def peru():
@@ -541,9 +697,13 @@ def peru():
     country = 'PE'
     name = 'Peru'  
     advisory = get_advisory(country)
-    jobs = (Job.query.filter(Job.location == f"{name}").all())
 
-    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
+
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
 @routes.route("/philippines", methods=["GET"])
 def philippines():
@@ -554,9 +714,13 @@ def philippines():
     country = 'Ph'
     name = 'Philippines'  
     advisory = get_advisory(country)
-    jobs = (Job.query.filter(Job.location == f"{name}").all())
 
-    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
+
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
 @routes.route("/russia", methods=["GET"])
 def russia():
@@ -567,9 +731,13 @@ def russia():
     country = 'RU'
     name = 'Russia'  
     advisory = get_advisory(country)
-    jobs = (Job.query.filter(Job.location == f"{name}").all())
 
-    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
+
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
 @routes.route("/s_china", methods=["GET"])
 def s_china():
@@ -580,9 +748,13 @@ def s_china():
     country = 'CN'
     name = 'Southern China'  
     advisory = get_advisory(country)
-    jobs = (Job.query.filter(Job.location == f"{name}").all())
 
-    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
+
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
 @routes.route("/sierra_leone", methods=["GET"])
 def sierra_leone():
@@ -593,9 +765,13 @@ def sierra_leone():
     country = 'SL'
     name = 'Sierra Leone'  
     advisory = get_advisory(country)
-    jobs = (Job.query.filter(Job.location == f"{name}").all())
 
-    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
+
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
 @routes.route("/skorea_japan", methods=["GET"])
 def skorea_japan():
@@ -606,9 +782,13 @@ def skorea_japan():
     country = 'JP'
     name = 'South Korea & Japan'  
     advisory = get_advisory(country)
-    jobs = (Job.query.filter(Job.location == f"{name}").all())
 
-    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
+
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
 @routes.route("/somalia", methods=["GET"])
 def somalia():
@@ -619,9 +799,13 @@ def somalia():
     country = 'SO'
     name = 'Somalia'  
     advisory = get_advisory(country)
-    jobs = (Job.query.filter(Job.location == f"{name}").all())
 
-    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
+
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
 @routes.route("/south_africa", methods=["GET"])
 def south_africa():
@@ -632,9 +816,13 @@ def south_africa():
     country = 'ZA'
     name = 'South Africa'  
     advisory = get_advisory(country)
-    jobs = (Job.query.filter(Job.location == f"{name}").all())
 
-    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
+
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
 @routes.route("/suriname", methods=["GET"])
 def suriname():
@@ -645,9 +833,13 @@ def suriname():
     country = 'SR'
     name= 'Suriname'
     advisory = get_advisory(country)
-    jobs = (Job.query.filter(Job.location == f"{name}").all())
 
-    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
+
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
 @routes.route("/uruguay", methods=["GET"])
 def uruguay():
@@ -658,11 +850,13 @@ def uruguay():
     country = 'UY'
     name = 'Uruguay'
     advisory = get_advisory(country)
-    jobs = (Job.query.filter(Job.location == f"{name}").all())
 
-    return render_template('/country.html', jobs=jobs, advisory=advisory, name=name)
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
+
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
 
-
-## break out res/data/advisory into a function and call it in all the country routes  (return redirect should be to "/", NOT '/home')
 ## make routes dynamic with {{Country}}

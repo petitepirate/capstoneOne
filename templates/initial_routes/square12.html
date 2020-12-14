@@ -4,13 +4,27 @@
 {% block content %}
 
 <h2>
-    <a href="/uk">UK</a> /
     <a href="/north_sea">North Sea</a> /
     <a href="/nw_africa_morocco">NW Africa & Morocco</a>
 </h2>
 
-    <p>TODO: Display the 6 job titles and their average dayrate data from the average of the overall region</p>
-    <p>For more specific details of day-rates in individual countries, please click their link above</p>
-  
+
+
+<div class="card">
+    <h2>North Sea</h2>
+    <div class="card-body">
+  <p>Average dayrate of all Job Titles: $ {{nsea_avg}}</p>
+ </div>
+  </div>
+
+  <div class="card">
+    <h2>NW Africa & Morocco</h2>
+    <div class="card-body">
+  <p>Average dayrate of all Job Titles: $ {{nwafrica_avg}}</p>
+ </div>
+  </div>
+
+  <p>For more specific details of day-rates in individual countries, please click their link above</p>
+
 {% endblock %}
 

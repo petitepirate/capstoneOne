@@ -5,11 +5,32 @@
 
 <h2>
     <a href="/skorea_japan">South Korea & Japan</a> /
-    <a href="/china">China</a> /
+    <a href="/china">China & Vietnam</a> /
     <a href="/russia">Russia</a>
 </h2>
 
-    <p>TODO: Display the 6 job titles and their average dayrate data from the average of the overall region</p>
+
+<div class="card">
+    <h2>South Korea & Japan</h2>
+    <div class="card-body">
+  <p>Average dayrate of all Job Titles: $ {{skorea_avg}}</p>
+ </div>
+  </div>
+
+  <div class="card">
+    <h2>China & Vietnam</h2>
+    <div class="card-body">
+<p>Average dayrate of all Job Titles: $ {{china_avg}}</p>
+ </div>
+  </div>
+
+  <div class="card">
+    <h2>Russia</h2>
+    <div class="card-body">
+<p>Average dayrate of all Job Titles: $ {{russia_avg}}</p>
+ </div>
+  </div>
+
     <p>For more specific details of day-rates in individual countries, please click their link above</p>
   
 {% endblock %}
