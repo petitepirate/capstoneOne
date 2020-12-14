@@ -124,8 +124,7 @@ def logout():
 @app.route("/user/<int:user_id>", methods=["GET"])
 def user_page(user_id):
     if not g.user:
-        flash("Access unauthorized.", "danger")
-        return redirect("/")
+        return redirect("/home")
 
     user = User.query.get_or_404(user_id)
     jobs = (Job.query.filter(Job.user_id == user_id).all())
@@ -135,6 +134,9 @@ def user_page(user_id):
 @app.route("/user/<int:user_id>/edit")
 def edit_user(user_id):
     """Show edit form"""
+    if not g.user:
+        return redirect("/home")
+
     form = EditUserForm()
     user = User.query.get_or_404(user_id)
     return render_template("edit_user.html", user=user, form=form)
@@ -166,9 +168,8 @@ def enterpage():
 @app.route("/home")
 def homepage():
 
-    # if not g.user:
-    #     flash("Access unauthorized.", "danger")
-    #     return redirect("/user/login")
+    if not g.user:
+        return redirect("/user/login")
 
     return render_template('index2.html')
 
@@ -181,9 +182,7 @@ def page_not_found(e):
     """Custom 404 Page"""
 
     return render_template('404.html'), 404
-# @app.route("/regions")
-# def aboutpage():
-#     return render_template('regions.html')
+
 
 
 #### JOBS ROUTES #####
@@ -191,7 +190,6 @@ def page_not_found(e):
 @app.route("/user/<int:user_id>/addjob", methods=["GET"])
 def new_job(user_id):
     if not g.user:
-        flash("Access unauthorized.", "danger")
         return redirect("/home")
 
     user = User.query.get_or_404(user_id)
@@ -224,27 +222,11 @@ def submit_job(user_id):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ##############################################################################
 # Turn off all caching in Flask
 #   (useful for dev; in production, this kind of stuff is typically
 #   handled elsewhere)
-#
-# https://stackoverflow.com/questions/34066804/disabling-caching-in-flask
+
 
 @app.after_request
 def add_header(req):

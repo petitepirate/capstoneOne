@@ -5,10 +5,18 @@
 <h2>{{name}}</h2>
 <div class="card">
     <div class="card-body">
-  <p> Display Average of 6 different Job Titles here in Cards </p>
-  {% for rate in PSO_highest %}
-  <p>Highest dayrate: {{rate.day_rate}}</p>
-  {% endfor %}
+  <p> Dayrates displayed in US Dollars</p>
+  <table>
+    {% for row in data %}
+        <tr>
+        {% for cell in row %}
+            <td>{{ cell }}</td>
+        {% endfor %}
+        </tr>
+    {% endfor %}
+    </table>
+
+
   </div>
   </div>
   
