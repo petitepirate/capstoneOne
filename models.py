@@ -12,7 +12,7 @@ def connect_db(app):
     db.app = app
     db.init_app(app)
 
-DEFAULT_IMG = "https://images.unsplash.com/photo-1562037283-072818fb6d8f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=250&q=80"
+DEFAULT_IMG = "https://images.unsplash.com/photo-1568430462989-44163eb1752f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=250&q=80"
 
 class User(db.Model):
 

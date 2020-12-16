@@ -173,7 +173,7 @@ def region17_page():
                 
     hawaii_avg=get_region_avg('Hawaii')
 
-    return render_template('/initial_routes/square17.html', hawaii_avg=hawaii_avg)
+    return redirect("/hawaii")
 
 @routes.route("/region/18", methods=["GET"])
 def region18_page():

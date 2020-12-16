@@ -3,8 +3,13 @@
 
 {% block content %}
 <h2>{{name}}</h2>
-<div class="card">
+
+<div class="row" style="width:90%; margin:auto;">
+  <div class="col-sm-5">
+
+<div class="card text-center" >
     <div class="card-body">
+      <h3>Average Day Rates</h3>
   <p> Dayrates displayed in US Dollars</p>
   <table>
     {% for row in data %}
@@ -15,34 +20,39 @@
         </tr>
     {% endfor %}
     </table>
+  </div>
+  </div>
+</div>
 
-
-  </div>
-  </div>
-  
-  <div class="card">
+<div class="col-sm-7">
+  <div class="card text-center" >
     <div class="card-body">
-  <h3>TRAVEL ADVISORY</h3>
-  <p>{{advisory}}</p>
-  </div>
-  </div>
-  
-  <div class="card">
-    <div class="card-body">
-  <h3>{{name}} Job History</h3>
-  
+  <h3>Job History</h3>
   <div class="row">
     <div class="col-sm-8">               
-      <h4> Jobs: on record: {{ jobs | length }}</h4>
+      <h4> Jobs: on record: {{ jobs | length }}</h4>  <!-- style auto margin -->
       <ul>
       {% for job in jobs %}
       <li>
-        <p><b>Job Title: </b> {{job.job_title}} <b>PSO Contractor:</b> {{job.cont_company}} - {{job.location}} - <b>Day Rate:</b> $ {{job.day_rate}}</p>
+        <p><b>Job Title:</b> {{job.job_title}} <b>PSO Contractor:</b> {{job.cont_company}} <b>Day Rate:</b> ${{job.day_rate}}</p>
       </li>
       {% endfor %}
       </ul>
       </div>
   </div>
   </div>
+</div>
+
+</div>
+</div>
+
+<div class="center">
+  <div class="card w-90 text-center">
+    <div class="card-body">
+  <h3>TRAVEL ADVISORY</h3>
+  <p>{{advisory}}</p>
   </div>
+  </div>
+</div> 
+
   {% endblock %}
