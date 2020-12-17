@@ -20,7 +20,8 @@
     </div>
 
   <div class="col-sm-8">               
-    <h1 style="text-align: left;">{{user.first_name}} {{user.last_name}}'s Job History</h1>
+    <h1 style="text-align: left;">{{user.first_name}} {{user.last_name}}</h1>
+    <div><p>To search for dayrate information by location please visit the <a href="/home">home tab</a></p></div>
     <h4> Jobs: on record: {{ user.jobs | length }}</h4>
     <ul>
     {% for job in jobs %}
