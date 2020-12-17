@@ -4,14 +4,15 @@
 {% block content %}
 <h2>{{name}}</h2>
 
-<div class="row" style="width:90%; margin:auto;">
-  <div class="col-sm-5">
-
-<div class="card text-center" >
-    <div class="card-body">
+<div class="row" >
+ 
+  <div class="center">
+    <div class="col-sm-3">
+<div class="card justify-content-center text-center " >
+    <div class="card-body ">
       <h3>Average Day Rates</h3>
   <p> Dayrates displayed in US Dollars</p>
-  <table>
+  <table class="justify-content-center text-center ">
     {% for row in data %}
         <tr>
         {% for cell in row %}
@@ -19,18 +20,34 @@
         {% endfor %}
         </tr>
     {% endfor %}
-    </table>
-  </div>
-  </div>
+  </table>
+</div>
+</div>
 </div>
 
+
 <div class="col-sm-7">
-  <div class="card text-center" >
+  <div class="card text-center example-1 square scrollbar-cyan bordered-cyan">
     <div class="card-body">
-  <h3>Job History</h3>
-  <div class="row">
-    <div class="col-sm-8">               
-      <h4> Jobs: on record: {{ jobs | length }}</h4>  <!-- style auto margin -->
+    <h3>TRAVEL ADVISORY</h3>
+    <p id="advisory">{{advisory}}</p>
+  </div>
+</div>
+</div>
+</div> 
+</div>
+
+
+
+
+<div class="row" style="width:90%; margin:auto;">
+  <div class="center">
+    <div class="card text-center justify-content-center col-sm-11 example-1 square scrollbar-cyan bordered-cyan" >
+      <div class="card-body">
+    <h3>Job History</h3>
+    <div class="row">            
+      <div class="center"><h4> Jobs on record: {{ jobs | length }}</h4> </div>
+      <div class="center">    <!-- style auto margin -->
       <ul>
       {% for job in jobs %}
       <li>
@@ -38,21 +55,13 @@
       </li>
       {% endfor %}
       </ul>
-      </div>
+    </div>
   </div>
   </div>
+</div>
+</div>
+</div>
 </div>
 
-</div>
-</div>
-
-<div class="center">
-  <div class="card w-90 text-center">
-    <div class="card-body">
-  <h3>TRAVEL ADVISORY</h3>
-  <p>{{advisory}}</p>
-  </div>
-  </div>
-</div> 
 
   {% endblock %}
