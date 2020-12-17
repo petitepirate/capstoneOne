@@ -643,7 +643,7 @@ def north_sea():
     if not g.user:
         flash("Access unauthorized.", "danger")
         return redirect("/home")
-    country = 'UK'  #uses england but could use norway
+    country = 'GB'  #uses england but could use norway
     name = 'North Sea'  
     advisory = get_advisory(country)
 
@@ -651,6 +651,7 @@ def north_sea():
     data= zip(TITLES, listofrates)
 
     jobs = get_jobs(name)
+
 
     return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
