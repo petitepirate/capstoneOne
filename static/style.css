@@ -71,6 +71,9 @@ body {
 	padding: 10px;
 }
 
+.user {
+	margin: 50px;
+}
 .loginmap {
 	display: flex;
 	justify-content: center;
@@ -290,7 +293,7 @@ nav form.navbar-form {
 	border-radius: 100%;
 	border: 5px solid #fff;
 	display: block;
-	margin-top: 2vw;
+	/* margin-top: 30px; */
 	width: 200px;
 	height: 200px;
 }

@@ -125,6 +125,7 @@ def logout():
 @app.route("/user/<int:user_id>", methods=["GET"])
 def user_page(user_id):
     if not g.user:
+        flash("Access unauthorized.", "danger")
         return redirect("/home")
 
     user = User.query.get_or_404(user_id)
@@ -136,6 +137,7 @@ def user_page(user_id):
 def edit_user(user_id):
     """Show edit form"""
     if not g.user:
+        flash("Access unauthorized.", "danger")
         return redirect("/home")
 
     form = EditUserForm()
@@ -170,6 +172,7 @@ def enterpage():
 def homepage():
 
     if not g.user:
+        flash("Access unauthorized.", "danger")
         return redirect("/user/login")
 
     return render_template('index2.html')
@@ -195,6 +198,7 @@ def countrylist():
 @app.route("/user/<int:user_id>/addjob", methods=["GET"])
 def new_job(user_id):
     if not g.user:
+        flash("Access unauthorized.", "danger")
         return redirect("/home")
 
     user = User.query.get_or_404(user_id)
