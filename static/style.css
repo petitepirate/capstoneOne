@@ -4,6 +4,7 @@
 	/* border: 3px solid orange; */
 	overflow: hidden;
 	background-color: white;
+	overflow-y: scroll;
 }
 
 body {
@@ -142,6 +143,14 @@ h2 {
 	font-family: 'Fredericka the Great', cursive;
 	font-size: 2vw;
 	padding-bottom: 0.2vw;
+}
+
+#list {
+	column-count: 3;
+	column-gap: 40px;
+	/* column-rule-width: 1px;
+	column-rule-style: outset;
+	column-rule-color: #ccc; */
 }
 
 .navbar {

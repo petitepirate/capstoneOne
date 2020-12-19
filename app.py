@@ -1,11 +1,12 @@
 from flask import Flask, render_template, request, flash, redirect, session, g, abort
-from models import db, connect_db, User, Job
+from models import db, connect_db, User, Job, DEFAULT_IMG
 from forms import NewUserForm, LoginForm, AddJobForm, EditUserForm
 from sqlalchemy.exc import IntegrityError
 from secrets import API_KEY
 import os
 import requests
 import pdb
+from helpers import COUNTRIES
 
 CURR_USER_KEY = "curr_user"
 
@@ -71,7 +72,7 @@ def add_user():
                 last_name=form.last_name.data,
                 email=form.email.data,
                 password=form.password.data,
-                image_url=form.image_url.data or None)
+                image_url=DEFAULT_IMG)   #form.image_url.data or None)
 
             # db.session.add(user)
             db.session.commit()
@@ -181,9 +182,13 @@ def aboutpage():
 def page_not_found(e):
     """Custom 404 Page"""
 
-    return render_template('404.html'), 404
+    return render_template('404.html')
 
-
+@app.route("/list")
+def countrylist():
+    """list of countries for easier searching not using the map"""
+    
+    return render_template('list.html', COUNTRIES=COUNTRIES)
 
 #### JOBS ROUTES #####
 

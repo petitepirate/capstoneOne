@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="center"><p>Please click on a location to see specific day rate information.</p></div>
+
+<div class="center">      
+    <div id="list">    <!-- style auto margin -->
+        <ul>
+        {% for country in COUNTRIES %}
+        <li>
+        <a href="/{{country[1]}}">{{country[0]}}</a>
+        </li>
+        {% endfor %}
+        </ul>
+      </div>
+    </div>
+      {% endblock %}

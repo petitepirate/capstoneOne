@@ -18,7 +18,7 @@ class NewUserForm(FlaskForm):
     last_name = StringField('Last Name', validators=[DataRequired()])
     email = StringField('E-mail', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[Length(min=6)])
-    image_url = StringField('(Optional) Image URL')
+    # image_url = StringField('(Optional) Image URL')
 
 class LoginForm(FlaskForm):
     """Login form."""
@@ -38,7 +38,7 @@ class AddJobForm(FlaskForm):
 class EditUserForm(FlaskForm):
     """Edit user form."""
     
-    image_url = StringField('Image URL')
+    # image_url = StringField('Image URL')
     username = StringField('Username', validators=[DataRequired()])
     email = StringField('E-mail', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])

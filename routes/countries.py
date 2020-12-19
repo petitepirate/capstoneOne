@@ -13,7 +13,7 @@ TITLES= ('Lead PAM', 'Lead PSO', 'Lead PSO/PAM', 'PSO/PAM', 'PAM', 'PSO')
 @routes.route("/alaska", methods=["GET"])
 def alaska():
     if not g.user:
-        flash("Access unauthorized.", "danger")
+        
         return redirect("/home")
 
     country = 'US'
@@ -30,7 +30,7 @@ def alaska():
 @routes.route("/angola", methods=["GET"])
 def angola():
     if not g.user:
-        flash("Access unauthorized.", "danger")
+        
         return redirect("/home")
     country = 'AO'
     name = 'Angola' 
@@ -46,7 +46,7 @@ def angola():
 @routes.route("/antarctica", methods=["GET"])
 def antarctica():
     if not g.user:
-        flash("Access unauthorized.", "danger")
+        
         return redirect("/home")
     country = 'AQ'
     name = 'Antartica'
@@ -63,7 +63,7 @@ def antarctica():
 def arctic_ocean():
 
     if not g.user:
-        flash("Access unauthorized.", "danger")
+        
         return redirect("/home")
     country = 'GL'  # No real country code for arctic - uses greenland since thats the likely launching place
     name = 'Arctic Ocean'  
@@ -80,7 +80,7 @@ def arctic_ocean():
 def argentina():
 
     if not g.user:
-        flash("Access unauthorized.", "danger")
+        
         return redirect("/home")
     country = 'AR'
     name = 'Argentina'  
@@ -96,7 +96,7 @@ def argentina():
 def australia_newzealand():
 
     if not g.user:
-        flash("Access unauthorized.", "danger")
+        
         return redirect("/home")
     country = 'AU'
     name = 'Australia & New Zealand'  
@@ -113,7 +113,7 @@ def australia_newzealand():
 def black_sea():
 
     if not g.user:
-        flash("Access unauthorized.", "danger")
+        
         return redirect("/home")
     country = 'TR'  #uses Turkey
     name = 'Black Sea'  
@@ -130,7 +130,7 @@ def black_sea():
 def brazil():
 
     if not g.user:
-        flash("Access unauthorized.", "danger")
+        
         return redirect("/home")
     country = 'BR'
     name = 'Brazil'  
@@ -147,7 +147,7 @@ def brazil():
 def california():
 
     if not g.user:
-        flash("Access unauthorized.", "danger")
+        
         return redirect("/home")
     country = 'US'
     name = 'California'  
@@ -164,7 +164,7 @@ def california():
 def canada():
 
     if not g.user:
-        flash("Access unauthorized.", "danger")
+        
         return redirect("/home")
     country = 'US' #api is a canadian travel api and so doesnt have canadian advisories since that is their home country
     name = 'Canada'  
@@ -181,7 +181,7 @@ def canada():
 def caribbean():
 
     if not g.user:
-        flash("Access unauthorized.", "danger")
+        
         return redirect("/home")
     country = 'BS'  #uses Bahamas 
     name = 'Caribbean'  
@@ -198,7 +198,7 @@ def caribbean():
 def caspian_sea():
 
     if not g.user:
-        flash("Access unauthorized.", "danger")
+        
         return redirect("/home")
     country = 'IR'  #uses Iran
     name = 'Caspian Sea'  
@@ -215,7 +215,7 @@ def caspian_sea():
 def chile():
 
     if not g.user:
-        flash("Access unauthorized.", "danger")
+        
         return redirect("/home")
     country = 'CL'
     name = 'Chile'  
@@ -232,7 +232,7 @@ def chile():
 def china_vietnam():
 
     if not g.user:
-        flash("Access unauthorized.", "danger")
+        
         return redirect("/home")
     country = 'CN'
     name = 'China & Vietnam'  
@@ -249,7 +249,7 @@ def china_vietnam():
 def columbia():
 
     if not g.user:
-        flash("Access unauthorized.", "danger")
+        
         return redirect("/home")
     country = 'CO'
     name = 'Columbia'  
@@ -266,7 +266,7 @@ def columbia():
 def ecuador():
 
     if not g.user:
-        flash("Access unauthorized.", "danger")
+        
         return redirect("/home")
     country = 'EC'
     name = 'Ecuador'  
@@ -283,7 +283,7 @@ def ecuador():
 def ethiopia():
 
     if not g.user:
-        flash("Access unauthorized.", "danger")
+        
         return redirect("/home")
     country = 'ET'
     name = 'Ethiopia'  
@@ -300,7 +300,7 @@ def ethiopia():
 def falkland_islands():
 
     if not g.user:
-        flash("Access unauthorized.", "danger")
+        
         return redirect("/home")
     country = 'FK'
     name = 'Falkland Islands'  
@@ -317,7 +317,7 @@ def falkland_islands():
 def french_guiana():
 
     if not g.user:
-        flash("Access unauthorized.", "danger")
+        
         return redirect("/home")
     country = 'GF'
     name = 'French Guiana'  
@@ -334,7 +334,7 @@ def french_guiana():
 def gabon():
 
     if not g.user:
-        flash("Access unauthorized.", "danger")
+        
         return redirect("/home")
     country = 'GA'
     name = 'Gabon'  
@@ -351,7 +351,7 @@ def gabon():
 def ghana():
 
     if not g.user:
-        flash("Access unauthorized.", "danger")
+        
         return redirect("/home")
     country = 'GH'
     jobs = (Job.query.filter(Job.location == "Ghana").all())
@@ -369,7 +369,7 @@ def ghana():
 def greenland():
 
     if not g.user:
-        flash("Access unauthorized.", "danger")
+        
         return redirect("/home")
     country = 'GL'
     name = 'Greenland'  
@@ -386,7 +386,7 @@ def greenland():
 def gulf_of_mexico():
 
     if not g.user:
-        flash("Access unauthorized.", "danger")
+        
         return redirect("/home")
     country = 'US'
     name = 'Gulf of Mexico'  
@@ -403,7 +403,7 @@ def gulf_of_mexico():
 def guyana():
 
     if not g.user:
-        flash("Access unauthorized.", "danger")
+        
         return redirect("/home")
     country = 'GY'
     name = 'Guyana'  
@@ -420,7 +420,7 @@ def guyana():
 def hawaii():
 
     if not g.user:
-        flash("Access unauthorized.", "danger")
+        
         return redirect("/home")
     country = 'US'
     name = 'Hawaii'  
@@ -437,7 +437,7 @@ def hawaii():
 def iceland():
 
     if not g.user:
-        flash("Access unauthorized.", "danger")
+        
         return redirect("/home")
     country = 'IS'
     name = 'Iceland'  
@@ -454,7 +454,7 @@ def iceland():
 def india_srilanka():
 
     if not g.user:
-        flash("Access unauthorized.", "danger")
+        
         return redirect("/home")
     country = 'IN'
     name = 'India & Sri Lanka'  
@@ -471,7 +471,7 @@ def india_srilanka():
 def indonesia():
 
     if not g.user:
-        flash("Access unauthorized.", "danger")
+        
         return redirect("/home")
     country = 'ID'
     name = 'Indonesia'  
@@ -488,7 +488,7 @@ def indonesia():
 def madagascar():
 
     if not g.user:
-        flash("Access unauthorized.", "danger")
+        
         return redirect("/home")
     country = 'MG'
     name = 'Madagascar'  
@@ -505,7 +505,7 @@ def madagascar():
 def malaysia():
 
     if not g.user:
-        flash("Access unauthorized.", "danger")
+        
         return redirect("/home")
     country = 'MY'
     name = 'Malaysia'  
@@ -522,7 +522,7 @@ def malaysia():
 def mauritania():
 
     if not g.user:
-        flash("Access unauthorized.", "danger")
+        
         return redirect("/home")
     country = 'MR'
     name = 'Mauritania'  
@@ -539,7 +539,7 @@ def mauritania():
 def mediterranean():
 
     if not g.user:
-        flash("Access unauthorized.", "danger")
+        
         return redirect("/home")
     country = 'EG' #uses egypt
     name = 'Mediterranean Sea'  
@@ -556,7 +556,7 @@ def mediterranean():
 def mexico():
 
     if not g.user:
-        flash("Access unauthorized.", "danger")
+        
         return redirect("/home")
     country = 'MX'
     name = 'Mexico (Pacific Ocean)'  
@@ -573,7 +573,7 @@ def mexico():
 def mozambique():
 
     if not g.user:
-        flash("Access unauthorized.", "danger")
+        
         return redirect("/home")
     country = 'MZ'
     name = 'Mozambique'  
@@ -590,7 +590,7 @@ def mozambique():
 def namibia():
 
     if not g.user:
-        flash("Access unauthorized.", "danger")
+        
         return redirect("/home")
     country = 'NA'
     name = 'Namibia'  
@@ -607,7 +607,7 @@ def namibia():
 def nigeria():
 
     if not g.user:
-        flash("Access unauthorized.", "danger")
+        
         return redirect("/home")
     country = 'NG'
     name = 'Nigeria'  
@@ -624,7 +624,7 @@ def nigeria():
 def north_atlantic():
 
     if not g.user:
-        flash("Access unauthorized.", "danger")
+        
         return redirect("/home")
     country = 'US'
     name = 'US East Coast (N. Atlantic Ocean)'  
@@ -641,7 +641,7 @@ def north_atlantic():
 def north_sea():
 
     if not g.user:
-        flash("Access unauthorized.", "danger")
+        
         return redirect("/home")
     country = 'GB'  #uses england but could use norway
     name = 'North Sea'  
@@ -659,7 +659,7 @@ def north_sea():
 def nw_africa_morocco():
 
     if not g.user:
-        flash("Access unauthorized.", "danger")
+        
         return redirect("/home")
     country = 'MA'
     name = 'NW Africa / Morocco'  
@@ -676,7 +676,7 @@ def nw_africa_morocco():
 def persian_gulf():
 
     if not g.user:
-        flash("Access unauthorized.", "danger")
+        
         return redirect("/home")
     country = 'QA' #uses Qatar
     name = 'Persian Gulf'  
@@ -693,7 +693,7 @@ def persian_gulf():
 def peru():
 
     if not g.user:
-        flash("Access unauthorized.", "danger")
+        
         return redirect("/home")
     country = 'PE'
     name = 'Peru'  
@@ -710,7 +710,7 @@ def peru():
 def philippines():
 
     if not g.user:
-        flash("Access unauthorized.", "danger")
+        
         return redirect("/home")
     country = 'Ph'
     name = 'Philippines'  
@@ -727,7 +727,7 @@ def philippines():
 def russia():
 
     if not g.user:
-        flash("Access unauthorized.", "danger")
+        
         return redirect("/home")
     country = 'RU'
     name = 'Russia'  
@@ -744,7 +744,7 @@ def russia():
 def s_china():
 
     if not g.user:
-        flash("Access unauthorized.", "danger")
+        
         return redirect("/home")
     country = 'CN'
     name = 'Southern China'  
@@ -761,7 +761,7 @@ def s_china():
 def sierra_leone():
 
     if not g.user:
-        flash("Access unauthorized.", "danger")
+        
         return redirect("/home")
     country = 'SL'
     name = 'Sierra Leone'  
@@ -778,7 +778,7 @@ def sierra_leone():
 def skorea_japan():
 
     if not g.user:
-        flash("Access unauthorized.", "danger")
+        
         return redirect("/home")
     country = 'JP'
     name = 'South Korea & Japan'  
@@ -795,7 +795,7 @@ def skorea_japan():
 def somalia():
 
     if not g.user:
-        flash("Access unauthorized.", "danger")
+        
         return redirect("/home")
     country = 'SO'
     name = 'Somalia'  
@@ -812,7 +812,7 @@ def somalia():
 def south_africa():
 
     if not g.user:
-        flash("Access unauthorized.", "danger")
+        
         return redirect("/home")
     country = 'ZA'
     name = 'South Africa'  
@@ -829,7 +829,7 @@ def south_africa():
 def suriname():
 
     if not g.user:
-        flash("Access unauthorized.", "danger")
+        
         return redirect("/home")
     country = 'SR'
     name= 'Suriname'
@@ -846,7 +846,7 @@ def suriname():
 def uruguay():
 
     if not g.user:
-        flash("Access unauthorized.", "danger")
+        
         return redirect("/")
     country = 'UY'
     name = 'Uruguay'
