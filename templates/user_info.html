@@ -26,7 +26,7 @@
     <ul>
     {% for job in jobs %}
     <li>
-        <p><b>Job Title: </b> {{job.job_title}} - {{job.location}} - <b>Day Rate:</b> $ {{job.day_rate}}</p>
+        <p><b>Job Title: </b> {{job.job_title}} - {{job.location}} - <b>Day Rate:</b> $ {{job.day_rate}} <a href="/job/{{job.id}}/editjob">Edit</a> </p>
     </li>
     {% endfor %}
     </ul>

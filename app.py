@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, flash, redirect, session, g, abort
 from models import db, connect_db, User, Job, DEFAULT_IMG
-from forms import NewUserForm, LoginForm, AddJobForm, EditUserForm
+from forms import NewUserForm, LoginForm, AddJobForm, EditUserForm, EditJobForm
 from sqlalchemy.exc import IntegrityError
 from secrets import API_KEY
 import os
@@ -139,9 +139,9 @@ def edit_user(user_id):
     if not g.user:
         flash("Access unauthorized.", "danger")
         return redirect("/home")
+    user = User.query.get(g.user.id)
+    form = EditUserForm(obj=user)
 
-    form = EditUserForm()
-    user = User.query.get_or_404(user_id)
     return render_template("edit_user.html", user=user, form=form)
 
 
@@ -160,6 +160,22 @@ def submit_edit(user_id):
     db.session.commit()
 
     return redirect(f"/user/{user.id}")
+
+
+@app.route('/user/delete', methods=["POST"])
+def delete_user():
+    """Delete user."""
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/")
+
+    do_logout()
+
+    db.session.delete(g.user)
+    db.session.commit()
+
+    return redirect("/")
 
 
 #### HOME ROUTES ####
@@ -229,6 +245,53 @@ def submit_job(user_id):
     
     return render_template('add_job.html', form=form)
 
+@app.route("/job/<int:job_id>/editjob", methods=["GET"])
+def edit_job(job_id):
+    """Show edit form"""
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+
+    job = Job.query.get_or_404(job_id)
+    form = EditJobForm(obj=job)
+    user = User.query.get_or_404(g.user.id)
+    return render_template("edit_job.html", user=user, job=job, form=form)
+
+@app.route("/job/<int:job_id>/editjob", methods=["POST"])
+def submit_edit_job(job_id):
+    job = Job.query.get_or_404(job_id)
+    form = EditJobForm()
+    user = User.query.get_or_404(g.user.id)
+
+    if form.validate_on_submit():
+        job_title = form.job_title.data
+        location = form.location.data
+        start_year = form.start_year.data
+        day_rate = form.day_rate.data
+        cont_company = form.cont_company.data
+        user_id = f"{user.id}"
+
+        job= Job(job_title=job_title, location=location, start_year=start_year, day_rate=day_rate, cont_company=cont_company, user_id=user_id)
+
+        db.session.add(job)
+        db.session.commit()
+
+        return redirect(f"/user/{user.id}")
+
+
+
+@app.route('/job/<int:job_id>/delete', methods=["POST"])
+def submit_job_edit(job_id):
+ 
+    job = Job.query.get_or_404(job_id)
+    if job.user_id != g.user.id:
+        flash("Access unauthorized.", "danger")
+        return redirect("/")
+
+    db.session.delete(job)
+    db.session.commit()
+
+    return redirect(f"/user/{g.user.id}")
 
 
 ##############################################################################

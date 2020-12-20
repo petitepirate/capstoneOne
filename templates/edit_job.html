@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <div class="row justify-content-md-center">
+    <div class="col-md-4">
+      <h2 class="join-message">Edit Job Details</h2>
+
+        <form method="POST">
+            {{ form.csrf_token }}
+            <div>
+                {{ form.hidden_tag() }}
+    
+                {% for field in form if field.widget.input_type != 'hidden' and field.name != 'password' %}
+                  {% for error in field.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                  {% endfor %}
+                  {{field.label}}{{ field(placeholder=field.label.text, class="form-control") }}
+                {% endfor %}
+            </div>
+      
+
+        <div class="edit-btn-area">
+          <button class="btn btn-info">Save Edits</button>
+          <a href="/user/{{ user.id }}" class="btn btn-outline-secondary">Cancel</a>
+        </div>
+      </form>
+      <form method="POST"
+      action="/job/{{job.id}}/delete">
+  <button class="btn btn-outline-danger">Delete</button>
+</form>
+    </div>
+  </div>
+
+{% endblock %}

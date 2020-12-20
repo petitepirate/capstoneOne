@@ -40,5 +40,15 @@ class EditUserForm(FlaskForm):
     
     # image_url = StringField('Image URL')
     username = StringField('Username', validators=[DataRequired()])
+    first_name = StringField('First Name', validators=[DataRequired()])
+    last_name = StringField('Last Name', validators=[DataRequired()])
     email = StringField('E-mail', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
+
+class EditJobForm(FlaskForm):
+
+    job_title = SelectField(u'Job Title', choices=JOB_TITLES)
+    location = SelectField(u'Location', choices=LOCATIONS)
+    start_year = IntegerField('Start Year', validators=[DataRequired()])
+    day_rate = StringField('Day Rate', validators=[DataRequired()])
+    cont_company = SelectField(u"Contracting Company", choices=CONT_COMPANIES)
