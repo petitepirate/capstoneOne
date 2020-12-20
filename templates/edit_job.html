@@ -20,14 +20,15 @@
             </div>
       
 
-        <div class="edit-btn-area">
+        <!-- <div class="edit-btn-area"> -->
           <button class="btn btn-info">Save Edits</button>
           <a href="/user/{{ user.id }}" class="btn btn-outline-secondary">Cancel</a>
-        </div>
       </form>
-      <form method="POST"
-      action="/job/{{job.id}}/delete">
-  <button class="btn btn-outline-danger">Delete</button>
+  
+     
+    <form method="POST"
+      action="/job/{{job.id}}/delete" style="display: inline;">
+  <button class="btn btn-outline-danger" >Delete</button>
 </form>
     </div>
   </div>

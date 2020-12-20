@@ -221,6 +221,15 @@ body {
 	cursor: pointer;
 }
 
+form {
+	display: inline;
+}
+
+table {
+	margin-right: auto;
+	margin-left: auto;
+}
+
 /* ======================= Nav */
 
 .navbar {
