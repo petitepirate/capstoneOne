@@ -5,7 +5,7 @@
 PSO PayScale is a website to crowdsource day rates for protected species observers so that they can view average rates by 
 location and job title in order to negotiate fair pay.
 
-Although this is a very niche demographic (Protected Species Observers and Passive Acoustic Monitoring Operators), 
+Although this is a very niche demographic (Protected Species Observers & Passive Acoustic Monitoring Operators), 
 there is a very real need for this type of tool in the offshore protected species monitoring industry.  This is my way of 
 giving back to my previous industry.
 ## User Flow
