@@ -691,7 +691,6 @@ def persian_gulf():
 
 @routes.route("/peru", methods=["GET"])
 def peru():
-
     if not g.user:
         
         return redirect("/home")
@@ -712,7 +711,7 @@ def philippines():
     if not g.user:
         
         return redirect("/home")
-    country = 'Ph'
+    country = 'PH'
     name = 'Philippines'  
     advisory = get_advisory(country)
 

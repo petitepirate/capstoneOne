@@ -15,7 +15,7 @@ def connect_db(app):
 DEFAULT_IMG = "https://images.unsplash.com/photo-1568430462989-44163eb1752f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=250&q=80"
 
 class User(db.Model):
-
+    """ User mode """
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True, unique=True)
@@ -72,7 +72,7 @@ class User(db.Model):
 
 
 class Job(db.Model):
-        
+    """Job Model"""  
     __tablename__ = 'jobs'
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)

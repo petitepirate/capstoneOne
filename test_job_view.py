@@ -60,5 +60,3 @@ class MessageViewTestCase(TestCase):
 
             job = Job.query.one()
             self.assertEqual(job.job_title, "PSO")
-
-

@@ -15,10 +15,11 @@
               {{field.label}}{{ field(placeholder=field.label.text, class="form-control") }}
             {% endfor %}
         </div>
-        <button class="btn btn-info btn-block">Add Job</button>
-        <a href="/user/{{ user.id }}" class="btn btn-outline-secondary">Cancel</a>
+        <button class="btn btn-info btn-block">Add Job</button> 
       </form>
+     <a href="/user/{{ user.id }}" class="btn btn-outline-secondary btn-block" style="margin-top: 8px;">Cancel</a>
     </div>
+
   </div>
 
 {% endblock %}

@@ -149,18 +149,23 @@ def edit_user(user_id):
 def submit_edit(user_id):
     """Edit a user"""
 
-    user = User.query.get_or_404(user_id)
-    user_name=request.form["user_name"]
-    first_name=request.form["first_name"]
-    last_name=request.form["last_name"]
-    email=request.form["email"]
-    image_url=request.form['image_url']
+    user = User.query.get_or_404(g.user.id)
+    form = EditUserForm(obj=user)
 
-    db.session.add(user)
-    db.session.commit()
+    if form.validate_on_submit():
+        if User.authenticate(form.user_name.data, form.password.data):
+            user.user_name = form.user_name.data
+            user.first_name = form.first_name.data
+            user.last_name = form.last_name.data
+            user.email = form.email.data
 
-    return redirect(f"/user/{user.id}")
 
+            db.session.add(user)
+            db.session.commit()
+
+            return redirect(f"/user/{user.id}")
+
+    return render_template("edit_user.html", user=user, form=form)
 
 @app.route('/user/delete', methods=["POST"])
 def delete_user():

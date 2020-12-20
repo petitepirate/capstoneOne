@@ -39,7 +39,7 @@ class EditUserForm(FlaskForm):
     """Edit user form."""
     
     # image_url = StringField('Image URL')
-    username = StringField('Username', validators=[DataRequired()])
+    user_name = StringField('Username', validators=[DataRequired()])
     first_name = StringField('First Name', validators=[DataRequired()])
     last_name = StringField('Last Name', validators=[DataRequired()])
     email = StringField('E-mail', validators=[DataRequired(), Email()])
