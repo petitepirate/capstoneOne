@@ -18,19 +18,9 @@ def get_advisory(country):
         data=res.json()
         advisory= data["entryExitRequirement"]["description"]
         return advisory
-    # except requests.exceptions.HTTPError as err:
-    #     raise SystemExit(err)
-    # except:
-    #     advisory='No Data Available'
-    #     return advisory
     except requests.exceptions.Timeout:
         advisory='No Data Available'
         return advisory
-    # except requests.exceptions.TooManyRedirects:
-    #     advisory='No Data Available'
-    #     return advisory
-    # except requests.exceptions.RequestException as e:
-    #     raise SystemExit(e)
 
 
 def check_user():
