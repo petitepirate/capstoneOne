@@ -14,13 +14,14 @@ COUNTRIES = [("Alaska", "alaska"), ("Angola", "angola"),("Antarctica", "antarcti
 
 def get_advisory(country):
     try:
-        res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"})
+        res = requests.get(f"{BASE_API_URL}{country}", headers={"X-Auth-API-Key":f"{API_KEY}"}, timeout=5.0)
         data=res.json()
         advisory= data["entryExitRequirement"]["description"]
         return advisory
-    except:
+    except requests.exceptions.Timeout:
         advisory='No Data Available'
         return advisory
+
 
 def check_user():
     if not g.user:
