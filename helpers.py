@@ -10,7 +10,7 @@ COUNTRIES = [("Alaska", "alaska"), ("Angola", "angola"),("Antarctica", "antarcti
 ("Falkland Islands", "falkland_islands"),("French Guiana", "french_guiana"),("Gabon", "gabon"),("Ghana", "ghana"),("Greenland", "greenland"),("Gulf of Mexico", "gulf_of_mexico"),("Guyana", "guyana"),("Hawaii", "hawaii"),("Iceland", "iceland"),
 ("India / Sri Lanka", "india_srilanka"),("Indonesia", "indonesia"),("Madagascar", "madagascar"),("Malaysia", "malaysia"),("Mauritania", "mauritania"),("Mediterranean Sea", "mediterranean"),("Mexico (Pacific)", "mexico"),("Mozambique", "mozambique"),
 ("Namibia", "namibia"),("Nigeria", "nigeria"),("US East Coast (N. Atlantic Ocean)", "north_atlantic"),("North Sea", "north_sea"),("NW Africa / Morocco", "nw_africa_morocco"),("Persian Gulf", "persian_gulf"),("Peru", "peru"),("Philippines", "philippines"),("Russia", "russia"),
-("Southern China", "s_china"),("Sierra Leone", "sierra_leone"),("S. Korea / Japan", "skorea_japan"),("Somalia", "somalia"),("South Africa", "south_africa"),("Suriname", "suriname"),("Uruguay", "uruguay")]
+("Southern China", "s_china"),("Sierra Leone", "sierra_leone"),("S. Korea / Japan", "skorea_japan"),("Somalia", "somalia"),("South Africa", "south_africa"),("Suriname", "suriname"),("Trinidad & Tobago", "trinidad_tobago"),("Uruguay", "uruguay")]
 
 def get_advisory(country):
     try:

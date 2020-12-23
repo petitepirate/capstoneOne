@@ -841,6 +841,25 @@ def suriname():
 
     return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
 
+
+@routes.route("/trinidad_tobago", methods=["GET"])
+def trinitobago():
+
+    if not g.user:
+        
+        return redirect("/home")
+    country = 'TT'
+    name= 'Trinidad & Tobago'
+    advisory = get_advisory(country)
+
+    listofrates= get_list(name)
+    data= zip(TITLES, listofrates)
+
+    jobs = get_jobs(name)
+
+    return render_template('/country.html', jobs=jobs, name=name, listofrates=listofrates, data=data, advisory=advisory)
+
+
 @routes.route("/uruguay", methods=["GET"])
 def uruguay():
 

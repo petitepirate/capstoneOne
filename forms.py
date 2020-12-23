@@ -8,8 +8,8 @@ LOCATIONS = [("Alaska", "Alaska"), ("Angola", "Angola"),("Antarctica", "Antarcti
 ("Falkland Islands", "Falkland Islands"),("French Guiana", "French Guiana"),("Gabon", "Gabon"),("Ghana", "Ghana"),("Greenland", "Greenland"),("Gulf of Mexico", "Gulf of Mexico"),("Guyana", "Guyana"),("Hawaii", "Hawaii"),("Iceland", "Iceland"),
 ("India / Sri Lanka", "India / Sri Lanka"),("Indonesia", "Indonesia"),("Madagascar", "Madagascar"),("Malaysia", "Malaysia"),("Mauritania", "Mauritania"),("Mediterranean Sea", "Mediterranean Sea"),("Mexico (Pacific)", "Mexico (Pacific)"),("Mozambique", "Mozambique"),
 ("Namibia", "Namibia"),("Nigeria", "Nigeria"),("US East Coast (N. Atlantic Ocean)", "US East Coast (N. Atlantic Ocean)"),("North Sea", "North Sea"),("NW Africa / Morocco", "NW Africa / Morocco"),("Persian Gulf", "Persian Gulf"),("Peru", "Peru"),("Philippines", "Philippines"),("Russia", "Russia"),
-("Southern China", "Southern China"),("Sierra Leone", "Sierra Leone"),("S. Korea / Japan", "S. Korea / Japan"),("Somalia", "Somalia"),("South Africa", "South Africa"),("Suriname", "Suriname"),("Uruguay", "Uruguay")]
-CONT_COMPANIES = [("RPS", "RPS"), ("EPI", "EPI"), ("Atlas", "Atlas"), ("LGL", "LGL"), ("AIS", "AIS"), ("CSA", "CSA"), ("Marine Ventures", "Marine Ventures")]
+("Southern China", "Southern China"),("Sierra Leone", "Sierra Leone"),("S. Korea / Japan", "S. Korea / Japan"),("Somalia", "Somalia"),("South Africa", "South Africa"),("Suriname", "Suriname"), ("Trinidad & Tobago", "Trinidad & Tobago"), ("Uruguay", "Uruguay")]
+CONT_COMPANIES = [("RPS", "RPS"), ("EPI", "EPI"), ("Atlas", "Atlas"), ("LGL", "LGL"), ("AIS", "AIS"), ("CSA", "CSA"), ("Marine Ventures", "Marine Ventures"), ("Other", "Other")]
 class NewUserForm(FlaskForm):
     """Form for adding users."""
 

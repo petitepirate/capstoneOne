@@ -27,9 +27,9 @@ def region3_page():
 
     canada_avg=get_region_avg('Canada')
     greenland_avg=get_region_avg('Greenland')
-    acrtic_avg=get_region_avg('Arctic Ocean')
+    arctic_avg=get_region_avg('Arctic Ocean')
 
-    return render_template('/initial_routes/square03.html', canada_avg=canada_avg, greenland_avg=greenland_avg, acrtic_avg=acrtic_avg)
+    return render_template('/initial_routes/square03.html', canada_avg=canada_avg, greenland_avg=greenland_avg, arctic_avg=arctic_avg)
 
 @routes.route("/region/04", methods=["GET"])
 def region4_page():
@@ -185,9 +185,10 @@ def region18_page():
     columbia_avg=get_region_avg('Columbia')
     equador_avg=get_region_avg('Equador')
     peru_avg=get_region_avg('Peru')
+    trinidad_tobago_avg=get_region_avg('Trinidad & Tobago')
 
 
-    return render_template('/initial_routes/square18.html', mexico_avg=mexico_avg, gom_avg=gom_avg, columbia_avg=columbia_avg, equador_avg=equador_avg, peru_avg=peru_avg)
+    return render_template('/initial_routes/square18.html', trinidad_tobago_avg=trinidad_tobago_avg, mexico_avg=mexico_avg, gom_avg=gom_avg, columbia_avg=columbia_avg, equador_avg=equador_avg, peru_avg=peru_avg)
 
 @routes.route("/region/19", methods=["GET"])
 def region19_page():
@@ -198,9 +199,11 @@ def region19_page():
     caribbean_avg=get_region_avg('Caribbean')
     guyana_avg=get_region_avg('Guyana')
     suriname_avg=get_region_avg('Suriname')
+    brazil_avg=get_region_avg('Brazil')
+    trinidad_tobago_avg=get_region_avg('Trinidad & Tobago')
     fguiana_avg=get_region_avg('French Guiana')
 
-    return render_template('/initial_routes/square19.html', gom_avg=gom_avg, caribbean_avg=caribbean_avg, guyana_avg=guyana_avg, suriname_avg=suriname_avg, fguiana_avg=fguiana_avg)
+    return render_template('/initial_routes/square19.html', gom_avg=gom_avg, brazil_avg=brazil_avg, trinidad_tobago_avg=trinidad_tobago_avg ,caribbean_avg=caribbean_avg, guyana_avg=guyana_avg, suriname_avg=suriname_avg, fguiana_avg=fguiana_avg)
 
 @routes.route("/region/20", methods=["GET"])
 def region20_page():
@@ -285,13 +288,13 @@ def region27_page():
         
     brazil_avg=get_region_avg('Brazil')
     uruguay_avg=get_region_avg('Uruguay')
-    antartica_avg=get_region_avg('Antarctica')
+    antarctica_avg=get_region_avg('Antarctica')
     chile_avg=get_region_avg('Chile')
     argentina_avg=get_region_avg('Argentina')
     falkland_avg=get_region_avg('Falkland Islands')
 
 
-    return render_template('/initial_routes/square27.html', brazil_avg=brazil_avg, uruguay_avg=uruguay_avg, antartica_avg=antartica_avg, chile_avg=chile_avg, argentina_avg=argentina_avg, falkland_avg=falkland_avg)
+    return render_template('/initial_routes/square27.html', brazil_avg=brazil_avg, uruguay_avg=uruguay_avg, antarctica_avg=antarctica_avg, chile_avg=chile_avg, argentina_avg=argentina_avg, falkland_avg=falkland_avg)
 
 @routes.route("/region/28", methods=["GET"])
 def region28_page():
@@ -300,12 +303,12 @@ def region28_page():
         
     brazil_avg=get_region_avg('Brazil')
     uruguay_avg=get_region_avg('Uruguay')
-    antartica_avg=get_region_avg('Antarctica')
+    antarctica_avg=get_region_avg('Antarctica')
     angola_avg=get_region_avg('Angola')
     namibia_avg=get_region_avg('Namibia')
     safrica_avg=get_region_avg('South Africa')
 
-    return render_template('/initial_routes/square28.html', brazil_avg=brazil_avg, uruguay_avg=uruguay_avg, antartica_avg=antartica_avg, angola_avg=angola_avg, namibia_avg=namibia_avg, safrica_avg=safrica_avg)
+    return render_template('/initial_routes/square28.html', antarctica_avg=antarctica_avg,brazil_avg=brazil_avg, uruguay_avg=uruguay_avg, angola_avg=angola_avg, namibia_avg=namibia_avg, safrica_avg=safrica_avg)
 
 @routes.route("/region/29", methods=["GET"])
 def region29_page():
@@ -317,7 +320,7 @@ def region29_page():
     mozambique_avg=get_region_avg('Mozambique')
     madagascar_avg=get_region_avg('Madagascar')
 
-    return render_template('/initial_routes/square29.html')
+    return render_template('/initial_routes/square29.html', angola_avg=angola_avg, namibia_avg=namibia_avg, mozambique_avg=mozambique_avg, madagascar_avg=madagascar_avg)
 
 @routes.route("/region/30", methods=["GET"])
 def region30_page():
