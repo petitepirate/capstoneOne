@@ -211,7 +211,10 @@ def page_not_found(e):
 @app.route("/list")
 def countrylist():
     """list of countries for easier searching not using the map"""
-    
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+
     return render_template('list.html', COUNTRIES=COUNTRIES)
 
 #### JOBS ROUTES #####
