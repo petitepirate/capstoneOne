@@ -13,7 +13,7 @@ CURR_USER_KEY = "curr_user"
 
 app = Flask(__name__)
 from routes import *
-app.register_blueprint(routes)
+app.register_blueprint(routes)  #links countries.py and regions.py
 
 
 CURR_USER_KEY = "curr_user"
