@@ -36,11 +36,11 @@ def region4_page():
     if not g.user:
         return redirect("/home")
 
-    acrtic_avg=get_region_avg('Arctic Ocean')
+    arctic_avg=get_region_avg('Arctic Ocean')
     greenland_avg=get_region_avg('Greenland')
     iceland_avg=get_region_avg('Iceland')
 
-    return render_template('/initial_routes/square04.html', iceland_avg=iceland_avg, greenland_avg=greenland_avg, acrtic_avg=acrtic_avg)
+    return render_template('/initial_routes/square04.html', iceland_avg=iceland_avg, greenland_avg=greenland_avg, arctic_avg=arctic_avg)
 
 @routes.route("/region/05", methods=["GET"])
 def region5_page():
@@ -48,30 +48,30 @@ def region5_page():
         return redirect("/home")
 
     nsea_avg=get_region_avg('North Sea')
-    acrtic_avg=get_region_avg('Arctic Ocean')
+    arctic_avg=get_region_avg('Arctic Ocean')
     russia_avg=get_region_avg('Russia')
 
-    return render_template('/initial_routes/square05.html', nsea_avg=nsea_avg, acrtic_avg=acrtic_avg, russia_avg=russia_avg)
+    return render_template('/initial_routes/square05.html', nsea_avg=nsea_avg, arctic_avg=arctic_avg, russia_avg=russia_avg)
 
 @routes.route("/region/06", methods=["GET"])
 def region6_page():
     if not g.user:
         return redirect("/home")
         
-    acrtic_avg=get_region_avg('Arctic Ocean')
+    arctic_avg=get_region_avg('Arctic Ocean')
     russia_avg=get_region_avg('Russia')
 
-    return render_template('/initial_routes/square06.html', acrtic_avg=acrtic_avg, russia_avg=russia_avg)
+    return render_template('/initial_routes/square06.html',  arctic_avg=arctic_avg, russia_avg=russia_avg)
 
 @routes.route("/region/07", methods=["GET"])
 def region7_page():
     if not g.user:
         return redirect("/home")
         
-    acrtic_avg=get_region_avg('Arctic Ocean')
+    arctic_avg=get_region_avg('Arctic Ocean')
     russia_avg=get_region_avg('Russia')
 
-    return render_template('/initial_routes/square07.html', acrtic_avg=acrtic_avg, russia_avg=russia_avg)
+    return render_template('/initial_routes/square07.html',  arctic_avg=arctic_avg, russia_avg=russia_avg)
 
 @routes.route("/region/08", methods=["GET"])
 def region8_page():
