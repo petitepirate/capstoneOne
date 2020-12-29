@@ -13,7 +13,7 @@ CURR_USER_KEY = "curr_user"
 
 app = Flask(__name__)
 from routes import *
-app.register_blueprint(routes)
+app.register_blueprint(routes)  #links countries.py and regions.py
 
 
 CURR_USER_KEY = "curr_user"
@@ -124,6 +124,7 @@ def logout():
 
 @app.route("/user/<int:user_id>", methods=["GET"])
 def user_page(user_id):
+    """ user details page"""
     if not g.user:
         flash("Access unauthorized.", "danger")
         return redirect("/home")
@@ -186,12 +187,13 @@ def delete_user():
 #### HOME ROUTES ####
 @app.route("/")
 def enterpage():
+    """homepage that leads to sign in and login pages"""
     data = open('index.html').read()    
     return data
 
 @app.route("/home")
 def homepage():
-
+    """homepage once logged in"""
     if not g.user:
         flash("Access unauthorized.", "danger")
         return redirect("/user/login")
@@ -200,6 +202,7 @@ def homepage():
 
 @app.route("/about")
 def aboutpage():
+    """About Page"""
     return render_template('about.html')
 
 @app.errorhandler(404)
@@ -210,8 +213,11 @@ def page_not_found(e):
 
 @app.route("/list")
 def countrylist():
-    """list of countries for easier searching not using the map"""
-    
+    """list of countries for easier searching not using the map."""
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/home")
+
     return render_template('list.html', COUNTRIES=COUNTRIES)
 
 #### JOBS ROUTES #####
