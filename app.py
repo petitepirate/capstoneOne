@@ -271,18 +271,18 @@ def edit_job(job_id):
 @app.route("/job/<int:job_id>/editjob", methods=["POST"])
 def submit_edit_job(job_id):
     job = Job.query.get_or_404(job_id)
-    form = EditJobForm()
+    form = EditJobForm(obj=job)
     user = User.query.get_or_404(g.user.id)
 
     if form.validate_on_submit():
-        job_title = form.job_title.data
-        location = form.location.data
-        start_year = form.start_year.data
-        day_rate = form.day_rate.data
-        cont_company = form.cont_company.data
+        job.job_title = form.job_title.data
+        job.location = form.location.data
+        job.start_year = form.start_year.data
+        job.day_rate = form.day_rate.data
+        job.cont_company = form.cont_company.data
         user_id = f"{user.id}"
 
-        job= Job(job_title=job_title, location=location, start_year=start_year, day_rate=day_rate, cont_company=cont_company, user_id=user_id)
+        job= Job(job_title=job.job_title, location=job.location, start_year=job.start_year, day_rate=job.day_rate, cont_company=job.cont_company, user_id=user_id)
 
 
         db.session.commit()
