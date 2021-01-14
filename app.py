@@ -284,7 +284,7 @@ def submit_edit_job(job_id):
 
         job= Job(job_title=job_title, location=location, start_year=start_year, day_rate=day_rate, cont_company=cont_company, user_id=user_id)
 
-        db.session.add(job)
+
         db.session.commit()
 
         return redirect(f"/user/{user.id}")
